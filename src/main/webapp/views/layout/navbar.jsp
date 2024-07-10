@@ -20,6 +20,7 @@
 				<li class="nav-item"><a href="/views/blog.jsp" class="nav-link">Blog</a></li>
 				<li class="nav-item"><a href="/views/contact.jsp"
 					class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="/views/login.jsp" class="nav-link">Login</a></li>
 			</ul>
 		</div>
 	</div>
