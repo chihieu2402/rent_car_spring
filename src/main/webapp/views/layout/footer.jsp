@@ -41,6 +41,7 @@
 						<li><a href="#" class="py-2 d-block">Booking Tips</a></li>
 						<li><a href="#" class="py-2 d-block">How it works</a></li>
 						<li><a href="#" class="py-2 d-block">Contact Us</a></li>
+						
 					</ul>
 				</div>
 			</div>

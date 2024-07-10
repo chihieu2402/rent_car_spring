@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="login.css">
+       <link rel="stylesheet" href="/views/css/login.css">
     <title>Login</title>
 </head>
 <body>
@@ -50,7 +50,7 @@
                         </button>
                     </div>
                     <div class="row">
-                        <small>Don't have an account? <a href="#">Sign Up</a></small>
+                        <small>Don't have an account? <a href="/views/signup.jsp">Sign Up</a></small>
                     </div>
                 </div>
             </div> 
