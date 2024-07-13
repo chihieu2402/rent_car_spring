@@ -50,7 +50,7 @@
                         </button>
                     </div>
                     <div class="row">
-                        <small>Don't have an account? <a href="/views/signup.jsp">Sign Up</a></small>
+                        <small>Don't have an account? <a href="/index/signup">Sign Up</a></small>
                     </div>
                 </div>
             </div> 

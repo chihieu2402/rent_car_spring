@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <button class="register-btn form-control mb-3 btn btn-primary">Register</button>
-                            <p class="text-center">Already A Member <a href="/views/login.jsp" class="link"><b>Log in</b></a></p>
+                            <small>Already a Account? <a href="/index/login">Login now</a></small>
                         
                     </form>
                                       
