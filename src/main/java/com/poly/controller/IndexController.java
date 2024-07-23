@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String index() {
-		return "index";
+		return "/views/index";
 	}
 	@RequestMapping(value="/index/login", method=RequestMethod.GET)
 	public String login() {
-		return "login";
+		return "/views/login";
 	}
 	@RequestMapping(value="/index/signup", method=RequestMethod.GET)
 	public String signup() {
-		return "signup";
+		return "/views/signup";
 	}
 }
