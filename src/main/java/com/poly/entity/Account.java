@@ -29,7 +29,8 @@ public class Account {
 
     @Column(name="Password", columnDefinition = "NVARCHAR(255)")
     private String passWord;
-
+    
+    
     @OneToOne(mappedBy = "account")
     private Customer customer;
 }

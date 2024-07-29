@@ -22,35 +22,20 @@
                         <h2 class="text-center mb-4">Register</h2>
                         <p>We are happy to have you back.</p>
                     </div>
-                    <form action="/signup" method="POST">
-                    <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Name" name="name">
+                    <form action="/signup" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username" name="user">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address" name="email">
-                        </div>
-                        <div class="input-group mb-3">
-                                <input type="password" name="password" placeholder="Password" class="form-control bg-light fs-6 border-end-0">
+                                <input type="password" name="pass" placeholder="Password" class="form-control bg-light fs-6 border-end-0">
                                 <span class="input-group-text bg-white  border-start-0"><i class="fa-solid fa-eye"></i></span>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" name="fwpass" placeholder="Forward-Password" class="form-control bg-light fs-6 border-end-0">
+                                <input type="password" name="passconfirm" placeholder="Forward-Password" class="form-control bg-light fs-6 border-end-0">
                                 <span class="input-group-text bg-white border-start-0"><i class="fa-solid fa-eye"></i></span>
                             </div>
-                       <div class="form-group mb-3">
-                                <label for="gender">Giới tính</label>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" name="gender" id="male" value="male" class="form-check-input">
-                                        <label for="male" class="form-check-label">Nam</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" name="gender" id="female" value="female" class="form-check-input">
-                                        <label for="female" class="form-check-label">Nữ</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="register-btn form-control mb-3 btn btn-primary">Register</button>
+                       		<div th:text="${mes}"></div>
+                            <button th:formaction="@{/index/signup}" class="register-btn form-control mb-3 btn btn-primary">Register</button>
                             <small>Already a Account? <a href="/index/login">Login now</a></small>
                         
                     </form>
