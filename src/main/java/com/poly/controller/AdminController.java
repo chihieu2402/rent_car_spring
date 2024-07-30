@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.poly.dao.AccountDao;
+import com.poly.dao.BillDao;
 import com.poly.dao.CarDao;
 import com.poly.dao.ReviewDao;
+import com.poly.dao.CustomerDao;
 import com.poly.entity.Account;
+import com.poly.entity.Bill;
 import com.poly.entity.Car;
 import com.poly.entity.Review;
+import com.poly.entity.Customer;
+
+
 @Controller
 public class AdminController {
 	  @Autowired
@@ -23,7 +29,11 @@ public class AdminController {
 	  ReviewDao reviewDao;
 	  @Autowired
 	  private AccountDao accountDao; // Assuming you have a DAO for Account
-	  
+	  @Autowired
+	 private BillDao billDao; // Assuming you have a DAO for Bill
+	  @Autowired
+	  private CustomerDao customerDao; // Assuming you have a DAO for Customer
+
 	  
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String index() {
@@ -59,6 +69,24 @@ public class AdminController {
         model.addAttribute("account", new Account()); // Initialize a new Account object for the form
         return "views/admin/User"; // Return the correct view for user management
     }
+    
+   
+
+    @GetMapping("/Bill")
+    public String Bill(Model model) {
+        List<Bill> bills = billDao.findAll(); // Fetch all bills
+        model.addAttribute("bills", bills); // Add bills to the model
+        model.addAttribute("bill", new Bill()); // Initialize a new Bill object for the form
+        return "views/admin/Bill"; // Return the correct view for bill management
+    }
 
 
+   
+    @GetMapping("/Customer")
+    public String listCustomers(Model model) {
+        List<Customer> customers = customerDao.findAll(); // Fetch all customers
+        model.addAttribute("customers", customers); // Add customers to the model
+        model.addAttribute("customer", new Customer()); // Initialize a new Customer object for the form
+        return "views/admin/Customer"; // Return the correct view for customer management
+    }
 }
