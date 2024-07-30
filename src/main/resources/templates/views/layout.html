@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		th:fragment="dynamic(view)">
+<head>
+<meta charset="UTF-8">
+<title>Rent Car - Bee</title>
+<!-- font family 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet"> -->
+<!-- css  -->
+<link rel="stylesheet" type="text/css"
+	href="/views/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/views/css/animate.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/views/css/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/views/css/owl.theme.default.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/views/css/magnific-popup.css">
+
+<link rel="stylesheet" type="text/css" href="/views/css/aos.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/views/css/ionicons.min.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/views/css/bootstrap-datepicker.css">
+<link rel="stylesheet" type="text/css"
+	href="/views/css/jquery.timepicker.css">
+
+
+<link rel="stylesheet" type="text/css" href="/views/css/flaticon.css">
+<link rel="stylesheet" type="text/css" href="/views/css/icomoon.css">
+<link rel="stylesheet" type="text/css" href="/views/css/style.css">
+
+</head>
+<body>
+	<nav th:insert="~{/views/layout/navbar.html::navbar}"></nav>
+	
+	
+	<div th:replace="${view}"></div>
+	
+	
+	
+	<footer th:insert="~{/views/layout/footer.html::footer}"></footer>
+	<!-- js   -->
+	<script src="/views/js/jquery.min.js"></script>
+	<script src="/views/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/views/js/popper.min.js"></script>
+	<script src="/views/js/bootstrap.min.js"></script>
+	<script src="/views/js/jquery.easing.1.3.js"></script>
+	<script src="/views/js/jquery.waypoints.min.js"></script>
+	<script src="/views/js/jquery.stellar.min.js"></script>
+	<script src="/views/js/owl.carousel.min.js"></script>
+	<script src="/views/js/jquery.magnific-popup.min.js"></script>
+	<script src="/views/js/aos.js"></script>
+	<script src="/views/js/jquery.animateNumber.min.js"></script>
+	<script src="/views/js/bootstrap-datepicker.js"></script>
+	<script src="/views/js/jquery.timepicker.min.js"></script>
+	<script src="/views/js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="/views/js/google-map.js"></script>
+	<script src="/views/js/main.js"></script>
+	<script src="https://kit.fontawesome.com/03099bb746.js" crossorigin="anonymous"></script>
+</body>
+</html>

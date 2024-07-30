@@ -30,4 +30,8 @@ public class IndexController {
 	public String signup() {
 		return "/views/signup";
 	}
+	@RequestMapping(value="/index/about", method=RequestMethod.GET)
+	public String about() {
+		return "/views/about";
+	}
 }
