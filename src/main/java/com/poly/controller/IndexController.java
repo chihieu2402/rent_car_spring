@@ -17,13 +17,12 @@ public class IndexController {
 	HttpSession ses;
 	@RequestMapping(value="/index")
 	public String index(Model model) {
-//		Account acc = (Account) ses.getAttribute("userSes");
-//		System.out.println("User: "+acc);
-//		if(acc!=null) {
-//			model.addAttribute("log", "Welcome! "+acc.getUserName());
-//		} else {
-//			model.addAttribute("log", "Login");
-//		}
+		Account acc = (Account) ses.getAttribute("userSes");
+		if(acc!=null) {
+			model.addAttribute("log",0);
+		} else {
+			model.addAttribute("log",1);
+		}
 		return "/views/index";
 	}
 

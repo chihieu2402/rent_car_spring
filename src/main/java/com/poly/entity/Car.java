@@ -38,12 +38,15 @@ public class Car {
 
     @Column(name="CarType", columnDefinition = "NVARCHAR(255)")
     private String carType;
+    
+    @Column(name="image")
+    private String image;
 
     @Column(name="PriceHoursCar")
     private double priceHoursCar;
 
     @Column(name="Status")
-    private String status;
+    private boolean status;
     
     @Column(name = "DiscountID")
     private int discountID;
