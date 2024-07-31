@@ -1,12 +1,16 @@
 package com.poly.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.poly.dao.CarDao;
 import com.poly.entity.Account;
+import com.poly.entity.Car;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -15,6 +19,8 @@ import jakarta.servlet.http.HttpSession;
 public class IndexController {
 	@Autowired
 	HttpSession ses;
+	@Autowired
+	CarDao carDao;
 	@RequestMapping(value="/index")
 	public String index(Model model) {
 		Account acc = (Account) ses.getAttribute("userSes");
@@ -83,6 +89,8 @@ public class IndexController {
 	}
 	@RequestMapping(value="/index/cars", method=RequestMethod.GET)
 	public String cars(Model model) {
+		List<Car> list_car = carDao.findAll();
+		model.addAttribute("cars", list_car);
 		Account acc = (Account) ses.getAttribute("userSes");
 		if(acc!=null) {
 			model.addAttribute("log",0);
