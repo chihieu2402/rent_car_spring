@@ -38,12 +38,13 @@ INSERT INTO [dbo].[discount]
 GO
 
 INSERT INTO [dbo].[review]
-           ([rating]
+           ([carid]
+		   ,[rating]
            ,[review_date]
            ,[review_text]
            ,[customerid])
      VALUES
-           (4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
+           (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
 GO
 
 INSERT INTO [dbo].[car_owner]
@@ -102,8 +103,10 @@ GO
 
 
 
-
+-- test
 select * from car
+select * from account
+select * from review
 
 
 

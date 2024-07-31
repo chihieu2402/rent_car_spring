@@ -43,6 +43,9 @@ public class Review {
     @JoinColumn(name = "CustomerID", insertable = false, updatable = false)
     private Customer customer;
     
+    @Column(name = "CarID")
+    private int carID;
+
     @OneToMany(mappedBy = "review")
     private List<Car> car;
 
