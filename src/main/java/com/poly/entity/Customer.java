@@ -39,7 +39,7 @@ public class Customer {
     @Column(name="IDCard")
     private String idCard;
 
-    @Column(name="Gender")
+    @Column(name="Gender", columnDefinition = "NVARCHAR(255)")
     private String gender;
     
     @Column(name="AccountID")

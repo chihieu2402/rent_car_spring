@@ -21,7 +21,7 @@ public class AdminController {
     @Autowired
     private AccountDao accountDao;
 
-    @GetMapping("/users")
+    @GetMapping("/account")
     public String users(Model model) {
         List<Account> accounts = accountDao.findAll();
         model.addAttribute("accounts", accounts);
@@ -32,7 +32,7 @@ public class AdminController {
     @PostMapping("/account/create")
     public String createAccount(@ModelAttribute("account") Account account) {
         accountDao.save(account);
-        return "redirect:/admin/users";
+        return "redirect:/admin/account";
     }
 
     @PostMapping("/account/update")
@@ -45,26 +45,27 @@ public class AdminController {
 		}
     	 
       
-        return "redirect:/admin/users";
+        return "redirect:/admin/account";
     }
 
     @GetMapping("/account/edit/{id}")
     public String editAccount(@PathVariable("id") int accountId, Model model) {
+    	
         Account account = accountDao.findById(accountId).orElse(null);
         model.addAttribute("account", account);
         List<Account> accounts = accountDao.findAll();
         model.addAttribute("accounts", accounts);
-        return "views/admin/User";
+        return "views/admin/user";
     }
 
     @PostMapping("/account/delete/{id}")
     public String deleteAccount(@PathVariable("id") int accountId) {
         accountDao.deleteById(accountId);
-        return "redirect:/admin/users";
+        return "redirect:/admin/account";
     }
     @PostMapping("/account/reset")
     public String reset(Model model) {
       
-        return "redirect:/admin/users";
+        return "redirect:/admin/account";
     }
 }

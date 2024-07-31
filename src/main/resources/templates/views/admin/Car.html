@@ -14,8 +14,8 @@
         <h1 class="mb-4">Car Management</h1>
 
         <!-- Form for car management -->
-        <form th:action="@{/admin/car}" th:object="${car}" method="post" enctype="multipart/form-data">
-           
+        <form th:action="@{/admin/car/create}" th:object="${car}" method="post" enctype="multipart/form-data">
+           <input type="hidden" th:value="${car.carID}" name="carID"> 
             <div class="form-group">
                 <label for="carName">Car Name:</label>
                 <input th:value="${car.carName}" name="carName" type="text" class="form-control" id="carName" placeholder="Enter car name" required>

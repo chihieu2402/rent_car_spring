@@ -107,7 +107,7 @@ GO
 select * from car
 select * from account
 select * from review
-
+select * from customer
 
 
 

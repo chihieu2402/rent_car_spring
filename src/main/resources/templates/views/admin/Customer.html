@@ -15,7 +15,7 @@
 
         <!-- Form for customer management -->
         <form th:action="@{/admin/customer/create}" th:object="${customer}" method="post">
-            
+            <input type="hidden" th:value="${customer.customerID}" name="customerID"> 
             <div class="form-group">
                 <label for="customerName">Customer Name:</label>
                 <input th:value="${customer.customerName}" name="customerName" type="text" class="form-control" id="customerName" placeholder="Enter customer name" required>
@@ -38,13 +38,13 @@
             </div>
             <div class="form-group">
                 <label for="accountId">Account ID:</label>
-                <input th:value="${customer.accountID}" name="accountID" type="text" class="form-control" id="accountId" placeholder="Enter account ID">
+                <input th:value="${customer.accountID}"  name="accountID" type="text" class="form-control" id="accountId" placeholder="Enter account ID" th:disabled="${able}">
             </div>
             <div class="btn-group mt-3">
                 <button type="submit" class="btn btn-info">Add</button>
                 <button type="submit" th:formaction="@{/admin/customer/update}" class="btn btn-warning">Update</button>
                 <button type="submit" th:formaction="@{/admin/customer/delete/{id}(id=${customer.customerID})}" class="btn btn-danger">Delete</button>
-                <button type="reset" class="btn btn-success">Reset</button>
+                <button type="submit" th:formaction="@{/admin/customer/reset}" class="btn btn-success">Reset</button>
             </div>
         </form>
 
