@@ -57,7 +57,7 @@ GO
 INSERT INTO [dbo].[car]
            ([car_brand]
            ,[car_name]
-           ,[car_type]
+           ,[address]
            ,[color]
            ,[discountid]
            ,[price_hours_car]
@@ -66,7 +66,7 @@ INSERT INTO [dbo].[car]
            ,[reviewid],
 		   [image])
      VALUES
-           ('Aston Martin','Aston Martin DB11',N'Xe đua',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
+           ('Aston Martin','Aston Martin DB11',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
 GO
 select * from car
 INSERT INTO [dbo].[bill]
