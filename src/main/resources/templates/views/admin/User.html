@@ -15,7 +15,7 @@
 
         <!-- Form for user management -->
         <form th:action="@{/admin/account/create}" th:object="${account}" method="post">
-            
+      		<input type="hidden" th:value="${account.accountID}" name="accountID"> 
             <div class="form-group">
                 <label for="userName">User Name:</label>
                 <input th:value="${account.userName}" name="userName" type="text" class="form-control" id="userName" placeholder="Enter username" required>
@@ -25,10 +25,10 @@
                 <input th:value="${account.passWord}" name="passWord" type="password" class="form-control" id="passWord" placeholder="Enter password" required>
             </div>
             <div class="btn-group mt-3">
-                <button type="submit" class="btn btn-info">Add</button>
+                <button type="submit" th:formaction="@{/admin/account/create}" class="btn btn-info">Add</button>
                 <button type="submit" th:formaction="@{/admin/account/update}" class="btn btn-warning">Update</button>
                 <button type="submit" th:formaction="@{/admin/account/delete/{id}(id=${account.accountID})}" class="btn btn-danger">Delete</button>
-                <button type="reset" class="btn btn-success">Reset</button>
+                <button type="submit" th:formaction="@{/admin/account/reset}" class="btn btn-success">Reset</button>
             </div>
         </form>
 
