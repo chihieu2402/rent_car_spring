@@ -25,11 +25,6 @@
     <link rel="stylesheet" href="/views/css/style.css">
 </head>
 <body>
-	  <body>
-    
-	      <!-- nav -->
-
-    <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -52,10 +47,14 @@
     					<div class="img rounded d-flex align-items-end" style="background-image: url(/images/car-1.jpg);">
     					</div>
     					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+    						<h2 class="mb-0"><a href="#">[[${car.carName}]]</a></h2>
     						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
+	    						<span class="cat">[[${car.carBrand}]]</span>
+	    						<p class="price ml-auto">[[${car.priceHoursCar}]] <span>/day</span></p>
+    						</div>
+    						<div class="d-flex justify-content-between">
+    							<h5>[[${car.address}]]</h5>
+    							<p>[[${car.status}?'Trống':'Bận']]</p>
     						</div>
     						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
@@ -105,7 +104,5 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/views/js/google-map.js"></script>
   <script src="/views/js/main.js"></script>
-    
-  </body>
 </body>
 </html>

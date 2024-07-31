@@ -36,8 +36,8 @@ public class Car {
     @Column(name="Color")
     private String color;
 
-    @Column(name="CarType", columnDefinition = "NVARCHAR(255)")
-    private String carType;
+    @Column(name="address", columnDefinition = "NVARCHAR(255)")
+    private String address;
     
     @Column(name="image")
     private String image;
