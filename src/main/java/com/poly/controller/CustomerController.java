@@ -41,7 +41,6 @@ public class CustomerController {
     	try {
    		 Customer u = customerDao.findByCustomerID(customer.getCustomerID());
       		  customerDao.save(customer);
-   		System.out.println(u);
 		} catch (Exception e) {
 			System.out.println("Đ có làm sao m update");
 		}

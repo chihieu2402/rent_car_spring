@@ -30,9 +30,9 @@
 						class="nav-link">Blog</a></li>
 					<li class="nav-item"><a href="/index/contact"
 						class="nav-link">Contact</a></li>
-					<li class="nav-item" th:if=${log==1}><a href="/index/login"
+					<li class="nav-item" th:if=${session.userSes==null}><a href="/index/login"
 						class="nav-link">Login</a></li>
-					<li class="nav-item" th:if=${log==0}>
+					<li class="nav-item" th:unless=${session.userSes==null}>
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle h-25" type="button"
 									data-bs-toggle="dropdown" aria-expanded="false">
