@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Bài Đăng</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Quản Lý Bài Đăng</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Xe</th>
+                    <th>Hiệu Xe</th>
+                    <th>Màu Sắc</th>
+                    <th>Địa chỉ</th>
+                    <th>Hình Ảnh</th>
+                    <th>Giá Theo Giờ</th>
+                    <th>Tên Người Cho Thuê</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.postID}"></td>
+                    <td th:text="${post.carName}"></td>
+                    <td th:text="${post.carBrand}"></td>
+                    <td th:text="${post.color}"></td>
+                    <td th:text="${post.address}"></td>
+                    <td th:text="${post.image}"></td>
+                    <td th:text="${post.priceHoursCar}"></td>
+                    <td th:text="${post.customerName}"></td>
+                    <td>
+                        <form action="/index/approvePost" method="post" style="display:inline;">
+                            <input type="hidden" name="postID" th:value="${post.postID}">
+                            <button type="submit" class="btn btn-success">Duyệt</button>
+                        </form>
+                        <form action="/index/rejectPost" method="post" style="display:inline;">
+                            <input type="hidden" name="postID" th:value="${post.postID}">
+                            <button type="submit" class="btn btn-danger">Từ Chối</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

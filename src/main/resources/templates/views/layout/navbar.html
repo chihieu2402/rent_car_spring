@@ -34,16 +34,21 @@
 						class="nav-link">Login</a></li>
 					<li class="nav-item" th:unless=${session.userSes==null}>
 							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle h-25" type="button"
-									data-bs-toggle="dropdown" aria-expanded="false">
-									<i class="fa-regular fa-user"></i></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else
-											here</a></li>
-								</ul>
-							</div>
+							<button class="btn btn-secondary dropdown-toggle h-25" type="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fa-regular fa-user"></i> <span class="badge"
+									th:text="${newNotificationCount}">0</span>
+								<!-- Hiển thị số lượng thông báo mới -->
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="/index/postcar">Đăng bài cho thuê</a></li>
+								<li><a class="dropdown-item" href="#">Hộp thư <span><i
+												class="fa-regular fa-envelope"></i></span></a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</div>
 					</li>
 				</ul>
 			</div>
