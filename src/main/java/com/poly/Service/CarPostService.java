@@ -34,10 +34,11 @@ public class CarPostService {
             car.setCarName(pendingPost.getCarName());
             car.setCarBrand(pendingPost.getCarBrand());
             car.setColor(pendingPost.getColor());
-            car.setAddress(pendingPost.getAddress());;
+            car.setAddress(pendingPost.getAddress());
             car.setImage(pendingPost.getImage());
             car.setPriceHoursCar(pendingPost.getPriceHoursCar());
             car.setStatus(true);
+            car.setDiscountID(pendingPost.getDiscountID()); // Set discountID
             carDao.save(car);
             pendingCarPostDao.delete(pendingPost);
         }

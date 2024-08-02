@@ -47,4 +47,8 @@ public class PendingCarPost {
 
     @Column(name = "CustomerName")
     private String customerName;
+
+    @Column(name = "DiscountID")
+    private Integer discountID;  // Thay đổi từ int thành Integer
+
 }
