@@ -8,7 +8,7 @@
 <body>
     <div class="container mt-5">
         <h1>Đăng Bài Cho Thuê Xe</h1>
-        <form action="/index/addPost" method="post">
+        <form action="/index/addPost" method="post" th:object="${pendingCarPost}">
             <div class="form-group">
                 <label for="carName">Tên Xe</label>
                 <input type="text" class="form-control" id="carName" name="carName" required>
