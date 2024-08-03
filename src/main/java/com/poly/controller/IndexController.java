@@ -6,9 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.poly.Service.CarPostService;
 import com.poly.Service.UpLoadSerVice;
+import com.poly.auth.UserRoot;
 import com.poly.dao.CarDao;
 import com.poly.dao.PendingCarPostDao;
 import com.poly.entity.Car;
@@ -38,12 +41,14 @@ public class IndexController {
     @Autowired
     private CarDao carDao;
     
-
+    @Autowired
+    HttpSession ses;
     
    
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Model model) {
+    public String index(Model model,Authentication auth) {
+		ses.getAttribute("userSes");
         return "/views/index";
     }
 
