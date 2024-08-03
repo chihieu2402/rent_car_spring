@@ -20,9 +20,7 @@ import com.poly.Service.CarPostService;
 import com.poly.dao.PendingCarPostDao;
 import com.poly.entity.PendingCarPost;
 
-
 import jakarta.servlet.ServletContext;
-
 
 @Controller
 public class PostCarController {
@@ -41,10 +39,10 @@ public class PostCarController {
     @RequestMapping(value = "/index/postcar", method = RequestMethod.GET)
     public String postcar() {
         return "views/postcar";
-    }	
+    }
 
     @PostMapping("/index/addPost")
-    public String addPost(@ModelAttribute PendingCarPost pendingCarPost, @RequestParam("imageName") MultipartFile imageFile,Model model)
+    public String addPost(@ModelAttribute PendingCarPost pendingCarPost, @RequestParam("imageName") MultipartFile imageFile)
             throws IOException {
 
         try {
@@ -59,17 +57,8 @@ public class PostCarController {
         }
 
         carPostService.addPost(pendingCarPost);
-
-        model.addAttribute("messages","Gửi thành công");
-       
-
         return "redirect:/index/managePosts?success";
-
     }
-    
-
-
-
 
     @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
     public String managePosts(Model model) {
@@ -91,5 +80,4 @@ public class PostCarController {
     }
 
    
-
 }

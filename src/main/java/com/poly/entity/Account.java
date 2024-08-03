@@ -52,7 +52,7 @@ public class Account {
     @Builder.Default
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
-        joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "accountID")},
+        joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "accountID")},
         inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> roles = Set.of(new Role(RoleUserEnum.USER));
     

@@ -3,6 +3,7 @@ package com.poly.controller;
 import com.poly.dao.CarDao;
 import com.poly.entity.Car;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,11 @@ import jakarta.servlet.ServletContext;
 import com.poly.Service.FileManagerService;
 
 
+@RequestMapping(value = "/admin")
+@PreAuthorize("hasAuthority('ADMIN')")
+
 @Controller
-@RequestMapping("/admin")
+
 public class CarContronller {
 
     private final String UPLOAD_DIR = "src/main/resources/static/images/";
