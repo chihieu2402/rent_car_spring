@@ -39,7 +39,7 @@ public class Car {
     @Column(name="address", columnDefinition = "NVARCHAR(255)")
     private String address;
     
-    @Column(name="image")
+    @Column(name = "Image")
     private String image;
 
     @Column(name="PriceHoursCar")
@@ -50,7 +50,7 @@ public class Car {
     
     @Column(name = "DiscountID")
     private int discountID;
-    
+  
    @ManyToOne
    @JoinColumn(name="ReviewID")
    private Review review;
@@ -65,5 +65,7 @@ public class Car {
    @OneToOne
    @JoinColumn(name = "DiscountID", insertable = false, updatable = false)
    private Discount discount;
+
+
    
 }

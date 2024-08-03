@@ -3,6 +3,7 @@ package com.poly.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,13 @@ import com.poly.entity.Account;
 
 @Controller
 @RequestMapping(value ="/admin")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
     
     @Autowired
     private AccountDao accountDao;
 
+    
     @GetMapping("/account")
     public String users(Model model) {
         List<Account> accounts = accountDao.findAll();

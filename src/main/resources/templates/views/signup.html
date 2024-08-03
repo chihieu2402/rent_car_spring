@@ -22,12 +22,12 @@
                         <h2 class="text-center mb-4">Register</h2>
                         <p>We are happy to have you back.</p>
                     </div>
-                    <form action="/signup" method="post">
+                    <form action="/account/handle-register" method="post" th:object="${registerDto}">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username" name="user">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username" name="name">
                         </div>
                         <div class="input-group mb-3">
-                                <input type="password" name="pass" placeholder="Password" class="form-control bg-light fs-6 border-end-0">
+                                <input type="password" name="password" placeholder="Password" class="form-control bg-light fs-6 border-end-0">
                                 <span class="input-group-text bg-white  border-start-0"><i class="fa-solid fa-eye"></i></span>
                             </div>
                             <div class="input-group mb-3">
@@ -35,7 +35,7 @@
                                 <span class="input-group-text bg-white border-start-0"><i class="fa-solid fa-eye"></i></span>
                             </div>
                        		<div th:text="${mes}"></div>
-                            <button th:formaction="@{/index/signup}" class="register-btn form-control mb-3 btn btn-primary">Register</button>
+                            <button class="register-btn form-control mb-3 btn btn-primary">Register</button>
                             <small>Already a Account? <a href="/index/login">Login now</a></small>
                         
                     </form>

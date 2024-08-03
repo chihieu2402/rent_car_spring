@@ -9,10 +9,10 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="d-flex justify-content-center align-items-center min-vh-100" style="background-image: url('../images/hinh-sieu-xe-32.jpg'); background-size: cover;">
+    <div class="d-flex justify-content-center align-items-center min-vh-100" style="background-image: url('/images/hinh-sieu-xe-32.jpg'); background-size: cover;">
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
             <!-- Left Box -->
-            <div class="col-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background-image: url('../images/hinh-sieu-xe-32.jpg'); background-size: cover;">
+            <div class="col-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background-image: url('/images/hinh-sieu-xe-32.jpg'); background-size: cover;">
                 <div class="featured-image mb-3"></div>
             </div>
             <!-- Right Box -->
@@ -22,7 +22,7 @@
                         <h2>Login</h2>
                         <p>We are happy to have you back.</p>
                     </div>
-                    <form action="/login" method="POST">
+                    <form method="post" th:action="@{|/account/login-check|}" th:object="${user}">
                         <div class="input-group mb-1">
                             <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username?" name="username">
                         </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div>[[${mes}]]</div> <br>
                         <div class="input-group mb-3">
-                            <button type="submit" th:formaction="@{|/index/login|}" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                            <button type="submit"  class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                         </div>
                     </form>
                     <div class="input-group mb-3">

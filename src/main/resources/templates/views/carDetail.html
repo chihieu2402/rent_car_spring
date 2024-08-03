@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/views/layout::dynamic(~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/views/layout::dynamic(~{::body})}">
 <head>
 <meta charset="UTF-8">
 <title>Car Detail</title>
@@ -8,6 +9,7 @@
 <link rel="stylesheet" href="../../../webapp/views/css/DinhDangSao.css">
 </head>
 <body>
+
    <!-- phần carDetail -->
     <section class="py-5 bg-light" th:object="${carDetail}">
         <div class="container px-4 px-lg-5 my-5">
@@ -23,28 +25,42 @@
 					<i th:classappend="${ratingTB >= 4} ? 'fa-solid' + ' fa-star fa-2xl': 'fa-regular' + ' fa-star fa-2xl'" style="color: #01d28e;"></i>
 					<i th:classappend="${ratingTB >= 5} ? 'fa-solid' + ' fa-star fa-2xl': 'fa-regular' + ' fa-star fa-2xl'" style="color: #01d28e;"></i>
 
-                    </div>
-                    <h1 class="display-5 fw-bolder">[[*{carName}]]</h1>
-                <div class="fs-5 ">
-                        <span class="text-decoration-line-through">[[*{priceHoursCar}]]</span>
-                        <span>[[*{priceHoursCar}]]</span>
-                    </div>
-                    <div class="lead">[[*{status}?'Trống':'Đã có người thuê']]</div>
-                     <div class="lead">[[*{address}]]</div>
-                     <div class="lead">Color: [[*{color}]]</div>
-                    <div class="d-flex">
-                        
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Book now
-                        </button>
-                		    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+					</div>
+					<h1 class="display-5 fw-bolder">[[*{carName}]]</h1>
+					<div class="fs-5 ">
+						<span class="text-decoration-line-through">[[*{priceHoursCar}]]</span>
+						<span>[[*{priceHoursCar}]]</span>
+					</div>
+					<div class="lead">[[*{status}?'Trống':'Đã có người thuê']]</div>
+					<div class="lead">[[*{address}]]</div>
+					<div class="lead">Color: [[*{color}]]</div>
+					<div class="d-flex">
+
+						<button class="btn btn-outline-dark flex-shrink-0" type="button">
+							<i class="bi-cart-fill me-1"></i> Book now
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
+	<!-- phần review -->
+	<section class="py-5 ">
+		<div class="container px-4 px-lg-5 mt-5">
+			<h2 class="fw-bolder mb-4">Review Car</h2>
+			<div
+				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<div class="col mb-5">1</div>
+				<div class="col mb-5">2</div>
+			</div>
+		</div>
+	</section>
+
+
+<<<<<<< HEAD
 <!-- phần comment -->
 <section class="py-3 ">
     <div class="container  mt-2"> 
@@ -155,5 +171,7 @@
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
  
+=======
+>>>>>>> 321f80663dabcc5513b19bd363fe5db51dc77e02
 </body>
 </html>
