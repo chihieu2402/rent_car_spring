@@ -37,9 +37,6 @@ public class IndexController {
     
     @Autowired
     private CarDao carDao;
-    
-
-    
    
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

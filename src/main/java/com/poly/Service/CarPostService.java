@@ -18,6 +18,9 @@ public class CarPostService {
 
     @Autowired
     private CarDao carDao;
+    
+    @Autowired
+    private PendingCarPostDao penDao;
 
     public void addPost(PendingCarPost pendingCarPost) {
         pendingCarPostDao.save(pendingCarPost);
@@ -49,5 +52,8 @@ public class CarPostService {
         if (pendingPost != null) {
             pendingCarPostDao.delete(pendingPost);
         }
+    }
+    public List<PendingCarPost> getAllApprovedPosts() {
+        return penDao.findByStatus(true); // Assuming 'status' is a boolean indicating approval
     }
 }

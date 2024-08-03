@@ -52,9 +52,8 @@ public class PostCarController {
         }
 
         carPostService.addPost(pendingCarPost);
-        return "redirect:/index/managePosts";
+        return "redirect:/index/managePosts?success";
     }
-
 
     @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
     public String managePosts(Model model) {
@@ -73,4 +72,6 @@ public class PostCarController {
         carPostService.rejectPost(postID);
         return "redirect:/index/managePosts";
     }
+
+   
 }

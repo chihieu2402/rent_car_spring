@@ -15,6 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.poly.dao.CarDao;
 import com.poly.entity.Car;
+
+import jakarta.servlet.ServletContext;
+
 import com.poly.Service.FileManagerService;
 
 @RequestMapping(value = "/admin")
@@ -26,13 +29,18 @@ public class CarContronller {
 
     @Autowired
     private FileManagerService fileManagerService;
+    
+    
+	@Autowired
+	ServletContext app;
 
     @GetMapping("/car")
     public String car(Model model) {
-        List<Car> cars = carDao.findAll();
-        model.addAttribute("cars", cars);
-        model.addAttribute("car", new Car()); // for the form
-        return "views/admin/Car"; // Main template with dynamic content
+    	 String path = app.getRealPath("/images/"); 
+    	    List<Car> cars = carDao.findAll();
+    	    model.addAttribute("cars", cars);
+    	    model.addAttribute("car", new Car()); // for the form
+    	    return "views/admin/Car"; // Main template with dynamic content
     }
 
     @PostMapping("/car/create")
