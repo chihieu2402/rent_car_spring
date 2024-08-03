@@ -50,7 +50,7 @@ public class Car {
     
     @Column(name = "DiscountID")
     private int discountID;
-    
+  
    @ManyToOne
    @JoinColumn(name="ReviewID")
    private Review review;
