@@ -4,15 +4,41 @@ USE RentCar;
 
 GO
 
+
 INSERT INTO [dbo].[account]
-           ([password]
+           ([auth_id]
+           ,[auth_type]
+           ,[password]
            ,[user_name])
      VALUES
-           ('123','chihieu2402'),
-		   ('123','minhben12'),
-		   ('123','tranti12'),
-		   ('123','hungheo69')
+           (0,0,123,'chihieu2402'),
+		   (0,1,123,'ben123'),
+		   (0,2,123,'teo123')
 GO
+
+
+INSERT INTO [dbo].[role]
+           ([id]
+           ,[name])
+     VALUES
+           (0,'ADMIN'),
+		   (1,'USER'),
+		   (2,'OWNER')
+GO
+
+
+INSERT INTO [dbo].[user_role]
+           ([user_id]
+           ,[role_id])
+     VALUES
+           (1,0),
+		   (2,1),
+		   (3,2)
+GO
+
+
+
+
 
 INSERT INTO [dbo].[customer]
            ([accountid]
