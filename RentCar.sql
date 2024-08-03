@@ -4,6 +4,7 @@ USE RentCar;
 
 GO
 
+
 INSERT INTO [dbo].[account]
            ([auth_id]
            ,[auth_type]
@@ -35,6 +36,10 @@ INSERT INTO [dbo].[user_role]
 		   (3,2)
 GO
 
+
+
+
+
 INSERT INTO [dbo].[customer]
            ([accountid]
            ,[address]
@@ -46,10 +51,8 @@ INSERT INTO [dbo].[customer]
            (1,'chihieu2402@gmail.com',N'Phan Chí Hiếu',N'Nam','083204012510','0378194280'),
 		   (2,'minhben12@gmail.com',N'Bùi Minh Ben',N'Nam','098427821313','0878417123'),
 		   (3,'thanntps2xx@gmail.com',N'Nguyễn Trần Thân',N'Nam','09289742723','0763570007'),
-
+		   (4,'hungheohuuhu@gmail.com',N'Võ Hoài Heo',N'Nam','09286642723','0900964729')
 GO
-
-
 INSERT INTO [dbo].[discount]
            ([create_date]
            ,[end_date]
@@ -57,7 +60,6 @@ INSERT INTO [dbo].[discount]
      VALUES
            ('2024-09-24','2024-10-1','10')
 GO
-
 INSERT INTO [dbo].[review]
            ([carid]
 		   ,[rating]
@@ -67,14 +69,11 @@ INSERT INTO [dbo].[review]
      VALUES
            (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
 GO
-
 INSERT INTO [dbo].[car_owner]
            ([customerid])
      VALUES
            (1)
 GO
-
-
 INSERT INTO [dbo].[car]
            ([car_brand]
            ,[car_name]
@@ -99,9 +98,6 @@ INSERT INTO [dbo].[bill]
      VALUES
            (N'Phan Chí Hiếu','30','31',10000.0,1)
 GO
-
-
-
 INSERT INTO [dbo].[bill_detail]
            ([address]
            ,[carid]
@@ -112,8 +108,6 @@ INSERT INTO [dbo].[bill_detail]
      VALUES
            (N'20 Lê Quang Địng, Quận Bình Thạnh, Tp. Hồ Chí Minh',1,'0378194280',10.0,2.0,1)
 GO
-
-
 INSERT INTO [dbo].[payment]
            ([amount]
            ,[billid]
@@ -121,17 +115,8 @@ INSERT INTO [dbo].[payment]
      VALUES
            (10.0,1,'2024-09-30')
 GO
-
-
-
 -- test
 select * from car
 select * from account
 select * from review
 select * from customer
-select * from pending_car_post
-
-
-
-
-
