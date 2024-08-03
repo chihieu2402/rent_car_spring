@@ -64,24 +64,24 @@ public class CarDetailController {
 	public String postCarDetail(Review review, @RequestParam("rateCarDetail") int rating, Model model,@PathVariable("id") int idcar) {
 		// lấy thông tin của người dùng đã đăng nhập
 				 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//					kiểm tra người dùng có tồn tại, đã đăng nhập chưa
-//				 if (authentication != null && authentication.isAuthenticated()) {
-//			            // Lấy tên người dùng
-//			            String username = authentication.getName();
-//			            model.addAttribute("username", username);
-//			            
-//			            // tim account đã đăng nhập, lấy id
-//			           Account accountLogin = accountDao.findByUserName(username).get(0);
+			//		kiểm tra người dùng có tồn tại, đã đăng nhập chưa
+				 if (authentication != null && authentication.isAuthenticated()) {
+			            // Lấy tên người dùng
+			            String username = authentication.getName();
+			            model.addAttribute("username", username);
+			            
+			            // tim account đã đăng nhập, lấy id
+//			           Account accountLogin = accountDao.findByUserName(username).get();
 //			           int accountID =  accountLogin.getAccountID();
 //			           
 //			           review.setRating(rating);
-//			           review.setCustomer(accountLogin.getCustomer());
+//			           review.setCustomerID(accountLogin.getAccountID());
 //			           review.setCarID(idcar);
 //			           review.setReviewDate(new Date());
 //			           
 //			           reviewDao.save(review);
-//			        }
-			       Account accountLogin = accountDao.findByUserName("minhben12").get();
+			        }
+			       Account accountLogin = accountDao.findByUserName("ben123").get();
 			     review.setRating(rating);
 		           review.setCustomerID(accountLogin.getAccountID());
 		           review.setCarID(idcar);
