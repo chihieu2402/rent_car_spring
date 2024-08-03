@@ -39,7 +39,7 @@ public class Car {
     @Column(name="address", columnDefinition = "NVARCHAR(255)")
     private String address;
     
-    @Column(name="image")
+    @Column(name = "Image")
     private String image;
 
     @Column(name="PriceHoursCar")

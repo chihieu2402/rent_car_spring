@@ -20,6 +20,7 @@ import com.poly.Service.CarPostService;
 import com.poly.dao.PendingCarPostDao;
 import com.poly.entity.PendingCarPost;
 
+
 @Controller
 public class PostCarController {
 
@@ -34,10 +35,10 @@ public class PostCarController {
     @RequestMapping(value = "/index/postcar", method = RequestMethod.GET)
     public String postcar() {
         return "views/postcar";
-    }
+    }	
 
     @PostMapping("/index/addPost")
-    public String addPost(@ModelAttribute PendingCarPost pendingCarPost, @RequestParam("imageName") MultipartFile imageFile)
+    public String addPost(@ModelAttribute PendingCarPost pendingCarPost, @RequestParam("imageName") MultipartFile imageFile,Model model)
             throws IOException {
 
         try {
@@ -52,25 +53,11 @@ public class PostCarController {
         }
 
         carPostService.addPost(pendingCarPost);
-        return "redirect:/index/managePosts";
+        model.addAttribute("messages","Gửi thành công");
+        return "redirect:/index/postcar";
     }
+    
 
 
-    @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
-    public String managePosts(Model model) {
-        model.addAttribute("posts", carPostService.getAllPendingPosts());
-        return "views/managePosts";
-    }
-
-    @RequestMapping(value = "/index/approvePost", method = RequestMethod.POST)
-    public String approvePost(@RequestParam int postID) {
-        carPostService.approvePost(postID);
-        return "redirect:/index/managePosts";
-    }
-
-    @RequestMapping(value = "/index/rejectPost", method = RequestMethod.POST)
-    public String rejectPost(@RequestParam int postID) {
-        carPostService.rejectPost(postID);
-        return "redirect:/index/managePosts";
-    }
+  
 }
