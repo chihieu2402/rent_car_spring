@@ -8,4 +8,6 @@ import com.poly.entity.Car;
 public interface CarDao extends JpaRepository<Car, Integer>{
 	Car findBycarID(Integer carID);
 
+
+
 }
