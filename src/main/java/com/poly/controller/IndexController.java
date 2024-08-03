@@ -43,7 +43,7 @@ public class IndexController {
     
     @Autowired
     HttpSession ses;
-    
+   
    
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

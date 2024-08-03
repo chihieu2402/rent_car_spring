@@ -23,6 +23,7 @@ public class AdminController {
     @Autowired
     private AccountDao accountDao;
 
+    
     @GetMapping("/account")
     public String users(Model model) {
         List<Account> accounts = accountDao.findAll();

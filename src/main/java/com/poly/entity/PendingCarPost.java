@@ -24,16 +24,17 @@ public class PendingCarPost {
     @Column(name = "PostID")
     private int postID;
 
-    @Column(name = "CarName")
+    
+    @Column(name = "CarName",columnDefinition = "NVARCHAR(255)")
     private String carName;
 
-    @Column(name = "CarBrand")
+    @Column(name = "CarBrand",columnDefinition = "NVARCHAR(255)")
     private String carBrand;
 
-    @Column(name = "Color")
+    @Column(name = "Color",columnDefinition = "NVARCHAR(255)")
     private String color;
 
-    @Column(name = "address")
+    @Column(name = "address",columnDefinition = "NVARCHAR(255)")
     private String address;
 
     @Column(name = "Image")
@@ -45,10 +46,10 @@ public class PendingCarPost {
     @Column(name = "Status")
     private boolean status;
 
-    @Column(name = "CustomerName")
+    @Column(name = "CustomerName",columnDefinition = "NVARCHAR(255)")
     private String customerName;
 
-    @Column(name = "DiscountID")
-    private Integer discountID;  // Thay đổi từ int thành Integer
+    @Column(name = "DiscountID",columnDefinition = "NVARCHAR(255)")
+    private Integer discountID;  
 
 }

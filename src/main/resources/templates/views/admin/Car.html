@@ -13,7 +13,11 @@
         <h1 class="mb-4">Car Management</h1>
 
         <!-- Form for car management -->
+<<<<<<< HEAD
         <form th:action="@{/admin/car/create}" th:object="${car}" method="post" enctype="multipart/form-data">
+=======
+      <form th:action="@{/admin/car/create}" th:object="${car}" method="post" enctype="multipart/form-data">
+>>>>>>> faed552dbb682c7f69b40da3b223df7552487a9c
             <input type="hidden" th:value="${car.carID}" name="carID">
             <div class="form-group">
                 <label for="carName">Car Name:</label>
@@ -50,12 +54,18 @@
                 <label for="ownerId">Owner ID:</label>
                 <input th:value="${car.carOwner != null ? car.carOwner.ownerID : ''}" name="ownerID" type="text" class="form-control" id="ownerId" placeholder="Enter owner ID">
             </div>
+<<<<<<< HEAD
 <div class="form-group">
                 <label for="image">Car Image:</label>
                 <input name="image" type="file" class="form-control-file" id="image" accept="image/*" multiple="multiple">
+=======
+            <div class="form-group">
+                <label for="image">Car Image:</label>
+                <input name="image" type="file" class="form-control-file" id="image" accept="image/*">
+>>>>>>> faed552dbb682c7f69b40da3b223df7552487a9c
             </div>
             <div class="btn-group mt-3">
-                <button type="submit" th:formaction="@{/admin/car/create}" class="btn btn-info">Add</button>
+                <button type="submit" class="btn btn-info">Add</button>
                 <button type="submit" th:formaction="@{/admin/car/update}" class="btn btn-warning">Update</button>
                 <button type="submit" th:formaction="@{/admin/car/delete/{id}(id=${car.carID})}" class="btn btn-danger">Delete</button>
                 <button type="reset" class="btn btn-success">Reset</button>

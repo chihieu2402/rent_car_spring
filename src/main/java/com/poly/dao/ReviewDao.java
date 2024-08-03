@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface ReviewDao extends JpaRepository<Review, Integer> {
 
+
 	Review findByCarID(int carID);
+
 }

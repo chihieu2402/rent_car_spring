@@ -65,5 +65,7 @@ public class Car {
    @OneToOne
    @JoinColumn(name = "DiscountID", insertable = false, updatable = false)
    private Discount discount;
+
+
    
 }

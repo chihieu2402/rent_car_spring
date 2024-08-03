@@ -7,7 +7,6 @@
     <title>Thống kê</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    
 </head>
 
 <body>
@@ -24,31 +23,31 @@
                     <div class="card text-white bg-primary">
                         <div class="card-body">
                             <h5 class="card-title">Tổng số User</h5>
-                            <p class="card-text">26K</p>
+                            <p class="card-text" th:text="${totalUsers}">26K</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="card text-white bg-success">
                         <div class="card-body">
-                            <h5 class="card-title">Tổng số Sản phẩm</h5>
-                            <p class="card-text">$6,200</p>
+                            <h5 class="card-title">Tổng số Xe</h5>
+                            <p class="card-text" th:text="${totalCars}">6200</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="card text-white bg-warning">
                         <div class="card-body">
-                            <h5 class="card-title">Tỷ lệ Chuyển đổi</h5>
-                            <p class="card-text">2.49%</p>
+                            <h5 class="card-title">Tổng số Đánh giá</h5>
+                            <p class="card-text" th:text="${totalReviews}">2.49%</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="card text-white bg-danger">
                         <div class="card-body">
-                            <h5 class="card-title">Số phiên</h5>
-                            <p class="card-text">44K</p>
+                            <h5 class="card-title">Thu nhập theo tháng</h5>
+                            <p class="card-text" th:text="${monthlyRentalIncome}">44K</p>
                         </div>
                     </div>
                 </div>

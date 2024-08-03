@@ -20,6 +20,8 @@ import com.poly.Service.CarPostService;
 import com.poly.dao.PendingCarPostDao;
 import com.poly.entity.PendingCarPost;
 
+import jakarta.servlet.ServletContext;
+
 @Controller
 public class PostCarController {
 
@@ -30,6 +32,9 @@ public class PostCarController {
     private CarPostService carPostService;
 
     private final String UPLOAD_DIR = "src/main/resources/static/images/";
+    
+    @Autowired
+	ServletContext app;
 
     @RequestMapping(value = "/index/postcar", method = RequestMethod.GET)
     public String postcar() {
@@ -52,12 +57,12 @@ public class PostCarController {
         }
 
         carPostService.addPost(pendingCarPost);
-        return "redirect:/index/managePosts";
+        return "redirect:/index/managePosts?success";
     }
-
 
     @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
     public String managePosts(Model model) {
+    	String path = app.getRealPath("/images/"); 
         model.addAttribute("posts", carPostService.getAllPendingPosts());
         return "views/managePosts";
     }
@@ -73,4 +78,6 @@ public class PostCarController {
         carPostService.rejectPost(postID);
         return "redirect:/index/managePosts";
     }
+
+   
 }
