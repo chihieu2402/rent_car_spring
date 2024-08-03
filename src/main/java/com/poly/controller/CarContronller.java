@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.poly.Service.FileManagerService;
 import com.poly.dao.CarDao;
 import com.poly.entity.Car;
-import com.poly.Service.FileManagerService;
 
 @RequestMapping(value = "/admin")
 @Controller
@@ -36,34 +36,35 @@ public class CarContronller {
     }
 
     @PostMapping("/car/create")
-    public String createCar(@ModelAttribute Car car, @RequestParam("image") MultipartFile file) {
-        if (!file.isEmpty()) {
-            List<String> filenames = fileManagerService.save("cars", new MultipartFile[]{file});
-            if (!filenames.isEmpty()) {
-                car.setImage(filenames.get(0));
-            }
+    public String createCar(@ModelAttribute("car") Car car, 
+                            @RequestParam("image") MultipartFile imageFile) {
+        if (!imageFile.isEmpty()) {
+            // Logic to save the image and set the image path in the Car entity
+            String imagePath = fileManagerService.saveFile(imageFile); // Implement this in your service
+            car.setImage(imagePath);
         }
-        carDao.save(car); // Save the new car to the database
-        return "redirect:/admin/car"; // Redirect to the car management page
+        carDao.save(car); // Save the car to the database
+        return "redirect:/admin/car"; // Redirect to the car list page or another appropriate page
     }
+
 
     @PostMapping("/car/update")
     public String updateCar(@ModelAttribute Car car, @RequestParam("image") MultipartFile file) {
         if (!file.isEmpty()) {
-            List<String> filenames = fileManagerService.save("cars", new MultipartFile[]{file});
-            if (!filenames.isEmpty()) {
-                car.setImage(filenames.get(0));
-            }
+            String savedImageName = fileManagerService.save(file, "cars");
+            car.setImage(savedImageName); // Set the saved filename to the car's image field
         }
         carDao.save(car); // Save the updated car to the database
         return "redirect:/admin/car"; // Redirect to the car management page
     }
 
+
+
     @PostMapping("/car/delete/{id}")
     public String deleteCar(@PathVariable int id) {
         Car car = carDao.findById(id).orElse(null);
         if (car != null) {
-            fileManagerService.delete("cars", car.getImage());
+            fileManagerService.delete("cars", car.getImage()); // Delete the image file
             carDao.deleteById(id); // Delete the car with the specified ID
         }
         return "redirect:/admin/car"; // Redirect to the car management page

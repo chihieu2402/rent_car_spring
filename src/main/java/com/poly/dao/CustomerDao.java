@@ -10,5 +10,7 @@ import com.poly.entity.Customer;
 public interface CustomerDao extends JpaRepository<Customer, Integer> {
 	
 	Customer findByCustomerID(Integer customerID);
+
+
 	
 }
