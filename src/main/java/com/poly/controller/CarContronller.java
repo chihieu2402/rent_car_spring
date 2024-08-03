@@ -13,12 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+
+import com.poly.Service.FileManagerService;
+import com.poly.dao.CarDao;
+import com.poly.entity.Car;
+
+import jakarta.servlet.ServletContext;
+
+import com.poly.Service.FileManagerService;
+
 
 @Controller
 @RequestMapping("/admin")
@@ -29,12 +39,22 @@ public class CarContronller {
     @Autowired
     private CarDao carDao;
 
+
+    @Autowired
+    private FileManagerService fileManagerService;
+    
+    
+	@Autowired
+	ServletContext app;
+
+
     @GetMapping("/car")
     public String car(Model model) {
-        List<Car> cars = carDao.findAll();
-        model.addAttribute("cars", cars);
-        model.addAttribute("car", new Car()); // for the form
-        return "views/admin/Car"; // Main template with dynamic content
+    	 String path = app.getRealPath("/images/"); 
+    	    List<Car> cars = carDao.findAll();
+    	    model.addAttribute("cars", cars);
+    	    model.addAttribute("car", new Car()); // for the form
+    	    return "views/admin/Car"; // Main template with dynamic content
     }
 
     @GetMapping("/car/edit/{id}")
