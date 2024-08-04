@@ -50,8 +50,8 @@ INSERT INTO [dbo].[customer]
      VALUES
            (1,'chihieu2402@gmail.com',N'Phan Chí Hiếu',N'Nam','083204012510','0378194280'),
 		   (2,'minhben12@gmail.com',N'Bùi Minh Ben',N'Nam','098427821313','0878417123'),
-		   (3,'thanntps2xx@gmail.com',N'Nguyễn Trần Thân',N'Nam','09289742723','0763570007'),
-		   (4,'hungheohuuhu@gmail.com',N'Võ Hoài Heo',N'Nam','09286642723','0900964729')
+		   (3,'thanntps2xx@gmail.com',N'Nguyễn Trần Thân',N'Nam','09289742723','0763570007')
+		  
 GO
 INSERT INTO [dbo].[discount]
            ([create_date]
