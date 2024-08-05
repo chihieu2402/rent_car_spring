@@ -93,10 +93,11 @@ INSERT INTO [dbo].[bill]
            ([customer_name]
            ,[rental_day]
            ,[return_day]
+		   ,[status]
            ,[total_price]
            ,[customerid])
      VALUES
-           (N'Phan Chí Hiếu','30','31',10000.0,1)
+           (N'Phan Chí Hiếu','30','31',1,10000.0,1)
 GO
 INSERT INTO [dbo].[bill_detail]
            ([address]

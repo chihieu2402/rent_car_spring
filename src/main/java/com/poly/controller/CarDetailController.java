@@ -45,7 +45,7 @@ public class CarDetailController {
 		
 		
 //		tìm cardetail theo carid
-		Car carDetail = carDao.findBycarID(idcar).get(0); 
+		Car carDetail = carDao.findBycarID(idcar);
 		model.addAttribute("carDetail",carDetail);
 		
 //		tìm review theo carID
