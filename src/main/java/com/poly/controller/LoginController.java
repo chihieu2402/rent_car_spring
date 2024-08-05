@@ -49,8 +49,8 @@ public class LoginController {
 //			acc.setPassWord(encodedPassword);
 //			accDao.save(acc);
 //		}
-//
-//		model.addAttribute("user", user);
+
+		model.addAttribute("user", user);
 		return "/views/login";
 	}
 

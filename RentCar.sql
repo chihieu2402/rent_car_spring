@@ -1,8 +1,6 @@
-﻿CREATE DATABASE RentCar;
-GO
-USE RentCar;
-
-GO
+﻿create database RentCar;
+go
+use RentCar;
 
 
 INSERT INTO [dbo].[account]
@@ -121,3 +119,5 @@ select * from car
 select * from account
 select * from review
 select * from customer
+select * from booking
+drop  table booking
