@@ -11,12 +11,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.den.dto.RegisterDto;
+import com.den.entity.User;
+import com.den.repository.UserRepo;
 import com.poly.auth.UserRoot;
 import com.poly.dao.AccountDao;
 import com.poly.entity.Account;
@@ -45,8 +49,8 @@ public class LoginController {
 //			acc.setPassWord(encodedPassword);
 //			accDao.save(acc);
 //		}
-
-		model.addAttribute("user", user);
+//
+//		model.addAttribute("user", user);
 		return "/views/login";
 	}
 

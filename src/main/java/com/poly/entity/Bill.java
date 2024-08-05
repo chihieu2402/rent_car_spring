@@ -38,6 +38,9 @@ public class Bill {
     
     @Column(name="TotalPrice")
     private double totalPrice;
+    
+    @Column(name="Status")
+    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "CustomerID")
