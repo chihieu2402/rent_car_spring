@@ -32,9 +32,9 @@ public class PostCarController {
     private CarPostService carPostService;
 
     private final String UPLOAD_DIR = "src/main/resources/static/images/";
-    
+
     @Autowired
-	ServletContext app;
+    ServletContext app;
 
     @RequestMapping(value = "/index/postcar", method = RequestMethod.GET)
     public String postcar() {
@@ -62,9 +62,9 @@ public class PostCarController {
 
     @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
     public String managePosts(Model model) {
-    	String path = app.getRealPath("/images/"); 
+        String path = app.getRealPath("/images/");
         model.addAttribute("posts", carPostService.getAllPendingPosts());
-        return "views/managePosts";
+        return "views/admin/managePosts";
     }
 
     @RequestMapping(value = "/index/approvePost", method = RequestMethod.POST)
@@ -78,6 +78,4 @@ public class PostCarController {
         carPostService.rejectPost(postID);
         return "redirect:/index/managePosts";
     }
-
-   
 }

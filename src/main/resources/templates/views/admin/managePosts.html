@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Management</title>
+    <title>Quản Lý Bài Đăng</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Quản Lý Bài Đăng</h1> <!-- Căn giữa tiêu đề -->
+        <h1 class="text-center mb-4">Quản Lý Bài Đăng</h1>
 
-        <!-- Thông báo thành công hoặc lỗi -->
         <div th:if="${successMessage}" class="alert alert-success">
             <span th:text="${successMessage}"></span>
         </div>
@@ -43,19 +42,18 @@
                     <td th:text="${post.color}"></td>
                     <td th:text="${post.address}"></td>
                     <td>
-                        <img th:src="@{${post.image}}" alt="Car Image"
-                            style="width: 100px; height: auto;">
+                        <img th:src="@{${post.image}}" alt="Car Image" style="width: 100px; height: auto;">
                     </td>
                     <td th:text="${post.priceHoursCar}"></td>
                     <td th:text="${post.customerName}"></td>
                     <td th:text="${post.discountID}"></td>
                     <td>
                         <div class="btn-group">
-                            <form action="/admin/rejectPost" method="post" style="display: inline;">
+                            <form action="/index/approvePost" method="post" style="display: inline;">
                                 <input type="hidden" name="postID" th:value="${post.postID}">
                                 <button type="submit" class="btn btn-success">Duyệt</button>
                             </form>
-                            <form action="/admin/rejectPost" method="post" style="display: inline;">
+                            <form action="/index/rejectPost" method="post" style="display: inline;">
                                 <input type="hidden" name="postID" th:value="${post.postID}">
                                 <button type="submit" class="btn btn-danger">Từ Chối</button>
                             </form>
@@ -66,4 +64,5 @@
         </table>
     </div>
 </body>
+
 </html>
