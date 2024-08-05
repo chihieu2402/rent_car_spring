@@ -78,6 +78,4 @@ public class PostCarController {
         carPostService.rejectPost(postID);
         return "redirect:/index/managePosts";
     }
-
-   
 }
