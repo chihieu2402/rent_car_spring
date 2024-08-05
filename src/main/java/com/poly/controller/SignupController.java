@@ -57,10 +57,17 @@ public class SignupController {
 //		return "/views/signup";
 //	}
 	@PostMapping("/account/handle-register")
-	public String handleRegister(@ModelAttribute RegisterDto registerDto) {
-		accDao.save(Account.builder().userName(registerDto.getName())
-				.passWord(passwordEncoder.encode(registerDto.getPassword())).build());
-		return "redirect:login";
+	public String handleRegister(@ModelAttribute RegisterDto registerDto, Model model) {
+	    if (!registerDto.getPassword().equals(registerDto.getPasswordconfirm())) {
+	        model.addAttribute("mes", "Passwords do not match");
+	        return "/views/signup"; // return to the registration page if passwords do not match
+	    }
+
+	    accDao.save(Account.builder()
+	            .userName(registerDto.getName())
+	            .passWord(passwordEncoder.encode(registerDto.getPassword()))
+	            .build());
+	    return "redirect:/index/login";
 	}
 
 }

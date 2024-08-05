@@ -66,6 +66,11 @@ public class Car {
    @JoinColumn(name = "DiscountID", insertable = false, updatable = false)
    private Discount discount;
 
+public Car get(int i) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 
    
 }
