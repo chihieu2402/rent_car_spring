@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.poly.Service.CarPostService;
+import com.poly.Service.CarService;
 import com.poly.Service.UpLoadSerVice;
 import com.poly.auth.UserRoot;
 import com.poly.dao.CarDao;
@@ -42,7 +43,10 @@ public class IndexController {
     private CarDao carDao;
     
     @Autowired
-    HttpSession ses;
+    private CarService carService;
+    
+    @Autowired
+    HttpSession ses; 
    
    
 
@@ -87,6 +91,21 @@ public class IndexController {
         List<Car> list_car = carDao.findAll();
         model.addAttribute("cars", list_car);
         return "/views/car";
+    }
+	@PostMapping("/find-cars")
+	public String getCarsByName(
+	        @RequestParam String carName,
+	        @RequestParam String address,
+	        @RequestParam(required = false) String minPrice,
+	        @RequestParam(required = false) String maxPrice,
+	        Model model) {
+
+	    Double minPriceDouble = (minPrice != null && !minPrice.isEmpty()) ? Double.valueOf(minPrice) : null;
+	    Double maxPriceDouble = (maxPrice != null && !maxPrice.isEmpty()) ? Double.valueOf(maxPrice) : null;
+
+	    List<Car> cars = carService.findCars(carName, address, minPriceDouble, maxPriceDouble);
+	    model.addAttribute("cars", cars);
+	    return "views/car";
     }
 
 }

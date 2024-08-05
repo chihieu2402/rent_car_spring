@@ -8,8 +8,11 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="mb-4">Car Management</h1>
-        <!-- Form for car management -->
+
+<div class="custom-heading mb-4"> 
+    <h1 class="mb-1">Car Management</h1>
+</div>	
+
 
         <form th:action="@{/admin/car/create}" th:object="${car}" method="post" enctype="multipart/form-data">
             <input type="hidden" th:value="${car.carID}" name="carID">

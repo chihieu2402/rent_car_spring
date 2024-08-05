@@ -67,8 +67,7 @@ INSERT INTO [dbo].[review]
            ,[review_text]
            ,[customerid])
      VALUES
-           (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1),
-		   (1,3,'2024-07-30',N'Anh Jack ơi, anh có thể đừng bỏ con không',1)
+           (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
 GO
 INSERT INTO [dbo].[car_owner]
            ([customerid])
@@ -94,10 +93,11 @@ INSERT INTO [dbo].[bill]
            ([customer_name]
            ,[rental_day]
            ,[return_day]
+		   ,[status]
            ,[total_price]
            ,[customerid])
      VALUES
-           (N'Phan Chí Hiếu','30','31',10000.0,1)
+           (N'Phan Chí Hiếu','30','31',1,10000.0,1)
 GO
 INSERT INTO [dbo].[bill_detail]
            ([address]
