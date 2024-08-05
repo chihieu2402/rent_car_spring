@@ -17,19 +17,15 @@ public class UserRootService implements UserDetailsService {
 		this.userRepo = userRepo;
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		return null;
-	}
 
-//  public UserDetails loadUserByUsername(String email)
-//      throws UsernameNotFoundException {
-//    Account user = userRepo.findByEmail(email)
-//        .orElseThrow(() ->
-//            new UsernameNotFoundException("User not found with email : " + email)
-//        );
-//
-//    return UserRoot.create(user);
-//  }
+  public UserDetails loadUserByUsername(String username)
+      throws UsernameNotFoundException {
+    Account user =  (userRepo.findByUserName(username))
+        .orElseThrow(() ->
+            new UsernameNotFoundException("User not found with email : " + username)
+        );
+
+    return UserRoot.create(user);
+  }
 }

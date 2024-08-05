@@ -11,7 +11,9 @@
 <body>
 
     <div class="container mt-4">
-        <h1 class="mb-4">Bill Management</h1>
+<div class="custom-heading mb-4"> 
+    <h1 class="mb-1">Bill Management</h1>
+</div>	
 
         <!-- Form for bill management -->
         <form th:action="@{/admin/bill/create}" th:object="${bill}" method="post">

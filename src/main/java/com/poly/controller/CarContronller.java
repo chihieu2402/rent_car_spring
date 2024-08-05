@@ -1,8 +1,9 @@
 package com.poly.controller;
 
-import java.util.List;
-
+import com.poly.dao.CarDao;
+import com.poly.entity.Car;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,23 +14,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
+
 import com.poly.Service.FileManagerService;
 import com.poly.dao.CarDao;
 import com.poly.entity.Car;
-//<<<<<<< HEAD
 
 import jakarta.servlet.ServletContext;
 
 import com.poly.Service.FileManagerService;
-//=======
-//>>>>>>> 4fbecff2ca1f5d594ee90accbcbec4ba70048533
+
 
 @RequestMapping(value = "/admin")
+@PreAuthorize("hasAuthority('ADMIN')")
+
 @Controller
+
 public class CarContronller {
+
+    private final String UPLOAD_DIR = "src/main/resources/static/images/";
 
     @Autowired
     private CarDao carDao;
+
 
     @Autowired
     private FileManagerService fileManagerService;
@@ -37,6 +50,7 @@ public class CarContronller {
     
 	@Autowired
 	ServletContext app;
+
 
     @GetMapping("/car")
     public String car(Model model) {
@@ -47,46 +61,57 @@ public class CarContronller {
     	    return "views/admin/Car"; // Main template with dynamic content
     }
 
-    @PostMapping("/car/create")
-    public String createCar(@ModelAttribute("car") Car car, 
-                            @RequestParam("image") MultipartFile imageFile) {
-        if (!imageFile.isEmpty()) {
-            // Logic to save the image and set the image path in the Car entity
-            String imagePath = fileManagerService.saveFile(imageFile); // Implement this in your service
-            car.setImage(imagePath);
-        }
-        carDao.save(car); // Save the car to the database
-        return "redirect:/admin/car"; // Redirect to the car list page or another appropriate page
-    }
-
-
-    @PostMapping("/car/update")
-    public String updateCar(@ModelAttribute Car car, @RequestParam("image") MultipartFile file) {
-        if (!file.isEmpty()) {
-            String savedImageName = fileManagerService.save(file, "cars");
-            car.setImage(savedImageName); // Set the saved filename to the car's image field
-        }
-        carDao.save(car); // Save the updated car to the database
-        return "redirect:/admin/car"; // Redirect to the car management page
-    }
-
-
-
-    @PostMapping("/car/delete/{id}")
-    public String deleteCar(@PathVariable int id) {
-        Car car = carDao.findById(id).orElse(null);
-        if (car != null) {
-            fileManagerService.delete("cars", car.getImage()); // Delete the image file
-            carDao.deleteById(id); // Delete the car with the specified ID
-        }
-        return "redirect:/admin/car"; // Redirect to the car management page
-    }
-
     @GetMapping("/car/edit/{id}")
     public String editCar(@PathVariable int id, Model model) {
-        Car car = carDao.findById(id).orElse(new Car());
-        model.addAttribute("car", car);
-        model.addAttribute("cars", carDao.findAll());
-        return "views/admin/Car";
+        Car car = carDao.findById(id).orElse(null);
+        List<Car> cars = carDao.findAll();
+        model.addAttribute("cars", cars);
+        if (car != null) {
+            model.addAttribute("car", car);
+        }
+        return "views/admin/Car"; // Trả về view để chỉnh sửa
+    }
+
+    @PostMapping("/car/create")
+    public String createCar(@ModelAttribute Car car, @RequestParam("imageFile") MultipartFile imageFile) {
+        handleImageUpload(car, imageFile);
+        carDao.save(car);
+        return "redirect:/admin/car";
+    }
+
+    @PostMapping("/car/update")
+    public String updateCar(@ModelAttribute Car car, @RequestParam("imageFile") MultipartFile imageFile) {
+        // Kiểm tra xem file ảnh có được tải lên hay không
+        if (!imageFile.isEmpty()) {
+            handleImageUpload(car, imageFile); // Nếu có file mới, xử lý tải lên
+        } else {
+            // Nếu không có file mới, không thay đổi trường ảnh
+            Car existingCar = carDao.findById(car.getCarID()).orElse(null);
+            if (existingCar != null) {
+                car.setImage(existingCar.getImage()); // Giữ lại ảnh cũ
+            }
+        }
+        carDao.save(car);
+        return "redirect:/admin/car";
+    }
+
+
+    @PostMapping("/car/delete")
+    public String deleteCar(@RequestParam("carID") int carID) {
+        carDao.deleteById(carID);
+        return "redirect:/admin/car";
+    }
+
+    private void handleImageUpload(Car car, MultipartFile imageFile) {
+        if (!imageFile.isEmpty()) {
+            try {
+                String fileName = imageFile.getOriginalFilename();
+                Path uploadPath = Paths.get(UPLOAD_DIR + fileName);
+                Files.copy(imageFile.getInputStream(), uploadPath, StandardCopyOption.REPLACE_EXISTING);
+                car.setImage("/images/" + fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

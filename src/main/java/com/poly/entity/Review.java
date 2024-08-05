@@ -29,6 +29,9 @@ public class Review {
     @Column(name = "ReviewID")
     private int reviewID;
 
+    @Column(name = "CustomerID")
+    private int customerID;
+    
     @Column(name="Rating")
     private int rating;
 

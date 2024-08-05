@@ -46,11 +46,11 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
             req -> req
-                .requestMatchers("/admin").authenticated()
+                .requestMatchers("/admin/*").authenticated()
                 .anyRequest().permitAll())
         .formLogin(form -> form
             .loginPage("/index/login")
-            .usernameParameter("email")
+            .usernameParameter("username")
             .passwordParameter("password")
             .loginProcessingUrl("/account/login-check")
             .defaultSuccessUrl("/account/login/success")
@@ -59,7 +59,7 @@ public class SecurityConfig {
 //            .authorizationEndpoint(e -> e.baseUri("/oauth2/authorization"))
 //            .redirectionEndpoint(e -> e.baseUri("/login/oauth2/code/*"))
 //            .userInfoEndpoint(e -> e.userService(customOAuth2UserService)))
-//        .exceptionHandling(e -> e.accessDeniedPage("/account/accessDenied"))
+        .exceptionHandling(e -> e.accessDeniedPage("/accessDenied"))
         .build();
   }
 }
