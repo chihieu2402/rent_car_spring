@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,6 +38,7 @@ public class PostCarController {
     ServletContext app;
 
     @RequestMapping(value = "/index/postcar", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('OWNER')")
     public String postcar() {
         return "views/postcar";
     }
@@ -57,7 +59,7 @@ public class PostCarController {
         }
 
         carPostService.addPost(pendingCarPost);
-        return "redirect:/index/managePosts?success";
+        return "views/postcar";
     }
 
     @RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)

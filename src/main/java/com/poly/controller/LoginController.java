@@ -104,8 +104,7 @@ public class LoginController {
 		return "redirect:/index";
 	}
 	@RequestMapping("/accessDenied")
-	@ResponseBody
 	public String accessDenied() {
-		return "Không có quyền truy cập";
+		return "/views/denied";
 	}
 }
