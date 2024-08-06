@@ -14,7 +14,7 @@
     <section class="py-5 bg-light" th:object="${carDetail}">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://car-images.bauersecure.com/wp-images/12847/1752x1168/50-bmw-x6-2024-front-driving.jpg?mode=max&quality=90&scale=down" alt="..." ></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="*{image}" alt="..." ></div>
                 <div class="col-md-6">
                     <div class="small mb-1">
                       <span class="badge bg-success"> [[${ratingTB}]]</span>
