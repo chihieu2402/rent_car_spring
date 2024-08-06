@@ -3,6 +3,7 @@ package com.poly.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,25 +30,26 @@ public class BookingController {
     }
 
     @PostMapping("/booking/submit")
-    public String submitBooking(@ModelAttribute Booking booking, RedirectAttributes redirectAttributes) {
+    public String submitBooking(@ModelAttribute Booking booking, RedirectAttributes redirectAttributes,Model model) {
         booking.setStatus(false); // Set to false initially until approved by admin
         bookingRepository.save(booking);
 
         // Add the booking object to the redirect attributes
         redirectAttributes.addFlashAttribute("booking", booking);
-
+        model.addAttribute("mes","Đã gửi yêu cầu!");
         // Redirect to the booking post page after submission
-        return "redirect:/booking/post"; // Ensure this endpoint matches your BookingPost view
+        return "views/Booking"; // Ensure this endpoint matches your BookingPost view
     }
 
-    @GetMapping("/booking/post")
+    @GetMapping("/admin/BookingCar")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String showBookingPost(Model model) {
         List<Booking> bookings = bookingRepository.findAll();
         model.addAttribute("bookings", bookings);
         return "views/BookingPost"; // Ensure this path matches your HTML file location
     }
 
-    @PostMapping("/index/approveBooking")
+    @PostMapping("/admin/approveBooking")
     public String approveBooking(@RequestParam("bookingID") int bookingID, RedirectAttributes redirectAttributes) {
         Booking booking = bookingRepository.findById(bookingID).orElseThrow(() -> new IllegalArgumentException("Invalid booking ID:" + bookingID));
         booking.setStatus(true); // Approve booking
@@ -55,16 +57,16 @@ public class BookingController {
 
         redirectAttributes.addFlashAttribute("message", "Booking approved successfully!");
 
-        return "redirect:/booking/post";
+        return "redirect:/admin/BookingCar";
     }
 
-    @PostMapping("/index/rejectBooking")
+    @PostMapping("/admin/rejectBooking")
     public String rejectBooking(@RequestParam("bookingID") int bookingID, RedirectAttributes redirectAttributes) {
         Booking booking = bookingRepository.findById(bookingID).orElseThrow(() -> new IllegalArgumentException("Invalid booking ID:" + bookingID));
         bookingRepository.delete(booking);
 
         redirectAttributes.addFlashAttribute("message", "Booking rejected successfully!");
 
-        return "redirect:/booking/post";
+        return "redirect:/admin/BookingCar";
     }
 }

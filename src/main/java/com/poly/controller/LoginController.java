@@ -43,7 +43,7 @@ public class LoginController {
 //			accDao.save(acc);
 //		}
 //
-//		model.addAttribute("user", user);
+		model.addAttribute("user", user);
 		return "/views/login";
 	}
 

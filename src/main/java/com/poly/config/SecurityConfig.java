@@ -46,7 +46,7 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
             req -> req
-                .requestMatchers("/admin/*").authenticated()
+                .requestMatchers("/admin/*","/booking/views/*").authenticated()
                 .anyRequest().permitAll())
         .formLogin(form -> form
             .loginPage("/index/login")
