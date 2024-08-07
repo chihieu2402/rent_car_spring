@@ -116,6 +116,24 @@ INSERT INTO [dbo].[payment]
      VALUES
            (10.0,1,'2024-09-30')
 GO
+
+
+--them du lieu carbrand
+INSERT INTO car_brand(brand_name) VALUES
+('Toyota'),
+('Honda'),
+('Ford'),
+('Mazda'),
+('Nissan'),
+('Hyundai'),
+('Kia'),
+('Mitsubishi'),
+('Subaru'),
+('Chevrolet');
+
+
+
+
 -- test
 select * from car
 select * from account

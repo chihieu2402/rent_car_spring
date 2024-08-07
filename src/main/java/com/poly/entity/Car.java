@@ -17,62 +17,103 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="Car")
+@Table(name = "Car")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CarID")
-    private int carID;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "CarID")
+//	private int carID;
+//
+//	@Column(name = "CarName", columnDefinition = "NVARCHAR(255)")
+//	private String carName;
+//
+//	@Column(name = "CarBrand")
+//	private String carBrand;
+//
+//	@Column(name = "Color")
+//	private String color;
+//
+//	@Column(name = "address", columnDefinition = "NVARCHAR(255)")
+//	private String address;
+//
+//	@Column(name = "Image")
+//	private String image;
+//
+//	@Column(name = "PriceHoursCar")
+//	private double priceHoursCar;
+//
+//	@Column(name = "Status")
+//	private boolean status;
+//
+//	@Column(name = "DiscountID")
+//	private int discountID;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "ReviewID")
+//	private Review review;
+//
+//	@OneToMany(mappedBy = "car")
+//	private List<BillDetail> billDetail;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "OwnerID")
+//	private CarOwner carOwner;
+//
+//	@OneToOne
+//	@JoinColumn(name = "DiscountID", insertable = false, updatable = false)
+//	private Discount discount;
+//
+//	public Car get(int i) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CarID")
+	private int carID;
 
-    @Column(name="CarName", columnDefinition = "NVARCHAR(255)")
-    private String carName;
-    
-    @Column(name="CarBrand")
-    private String carBrand;
-    
-    @Column(name="Color")
-    private String color;
+	@Column(name = "CarName", columnDefinition = "NVARCHAR(255)")
+	private String carName;
 
-    @Column(name="address", columnDefinition = "NVARCHAR(255)")
-    private String address;
-    
-    @Column(name = "Image")
-    private String image;
+	@ManyToOne
+	@JoinColumn(name = "CarBrandID")
+	private CarBrand carBrand;
 
-    @Column(name="PriceHoursCar")
-    private double priceHoursCar;
+	@Column(name = "Color", columnDefinition = "NVARCHAR(255)")
+	private String color;
 
-    @Column(name="Status")
-    private boolean status;
-    
-    @Column(name = "DiscountID")
-    private int discountID;
-  
-   @ManyToOne
-   @JoinColumn(name="ReviewID")
-   private Review review;
-   
-   @OneToMany(mappedBy = "car")
-   private List<BillDetail> billDetail;
+	@Column(name = "Address", columnDefinition = "NVARCHAR(255)")
+	private String address;
 
-   @ManyToOne
-   @JoinColumn(name="OwnerID")
-   private CarOwner carOwner;
-   
-   @OneToOne
-   @JoinColumn(name = "DiscountID", insertable = false, updatable = false)
-   private Discount discount;
+	@Column(name = "Image")
+	private String image;
 
-public Car get(int i) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Column(name = "PriceHoursCar")
+	private double priceHoursCar;
 
+	@Column(name = "Status")
+	private boolean status;
 
+	@Column(name = "OwnershipDocument")
+	private String ownershipDocument;
 
+	@ManyToOne
+	@JoinColumn(name = "OwnerID")
+	private CarOwner carOwner;
 
-   
+	@OneToMany(mappedBy = "car")
+	private List<BillDetail> billDetail;
+
+	@ManyToOne
+	@JoinColumn(name = "ReviewID")
+	private Review review;
+
+	@OneToOne
+	@JoinColumn(name = "DiscountID", insertable = false, updatable = false)
+	private Discount discount;
+	
+
 }
