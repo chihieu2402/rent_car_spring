@@ -48,8 +48,8 @@ public class Car {
 //	@Column(name = "Status")
 //	private boolean status;
 //
-//	@Column(name = "DiscountID")
-//	private int discountID;
+	@Column(name = "DiscountID")
+	private int discountID;
 //
 //	@ManyToOne
 //	@JoinColumn(name = "ReviewID")

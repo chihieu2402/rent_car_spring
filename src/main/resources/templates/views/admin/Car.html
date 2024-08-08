@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="discountID">Discount ID:</label>
-                        <input th:value="${car.discountID}" name="discountID" type="number" class="form-control" id="discountID" placeholder="Enter discount ID">
+                        <input th:value="${car.discount.discountID}" name="discountID" type="number" class="form-control" id="discountID" placeholder="Enter discount ID">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -97,7 +97,7 @@
                     <td th:text="${car.address}"></td>
                     <td th:text="${car.priceHoursCar}"></td>
                     <td th:text="${car.status ? 'Active' : 'Inactive'}"></td>
-                    <td th:text="${car.discountID}"></td>
+                    <td th:text="${car.discount.discountID}"></td>
                     <td th:text="${car.carOwner != null ? car.carOwner.ownerID : ''}"></td>
                     <td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>
                     <td><a th:href="@{/admin/car/edit/{id}(id=${car.carID})}" class="btn btn-primary">Edit</a></td>
