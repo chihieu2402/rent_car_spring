@@ -43,7 +43,6 @@ public class Account {
     private String userName;
 
     @Column(name="Password", columnDefinition = "NVARCHAR(255)")
-    @JsonIgnore
     private String passWord;
     
     

@@ -17,6 +17,7 @@ import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
 @Table(name="Review")
@@ -49,6 +50,7 @@ public class Review {
     @Column(name = "CarID")
     private int carID;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "review")
     private List<Car> car;
 
