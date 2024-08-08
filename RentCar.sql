@@ -74,24 +74,8 @@ INSERT INTO [dbo].[car_owner]
      VALUES
            (1)
 GO
-
---them du lieu carbrand
-INSERT INTO car_brand(brand_name) VALUES
-('Toyota'),
-('Honda'),
-('Ford'),
-('Mazda'),
-('Nissan'),
-('Hyundai'),
-('Kia'),
-('Mitsubishi'),
-('Subaru'),
-('Chevrolet');
-
-
-
 INSERT INTO [dbo].[car]
-           ([car_brandid]
+           ([car_brand]
            ,[car_name]
            ,[address]
            ,[color]
@@ -100,13 +84,10 @@ INSERT INTO [dbo].[car]
            ,[status]
            ,[ownerid]
            ,[reviewid],
-			[image])
+		   [image])
      VALUES
-           (1,'Aston Martin',N'112 Tô Ký',N'Đen',1,10.0,1,1,2,'hinh-sieu-xe-32.jpg')
+           ('Aston Martin','Aston Martin DB11',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
 GO
-
-SELECT * FROM [dbo].[review];
-
 select * from car
 INSERT INTO [dbo].[bill]
            ([customer_name]
@@ -136,6 +117,19 @@ INSERT INTO [dbo].[payment]
            (10.0,1,'2024-09-30')
 GO
 
+
+--them du lieu carbrand
+INSERT INTO car_brand(brand_name) VALUES
+('Toyota'),
+('Honda'),
+('Ford'),
+('Mazda'),
+('Nissan'),
+('Hyundai'),
+('Kia'),
+('Mitsubishi'),
+('Subaru'),
+('Chevrolet');
 
 
 
