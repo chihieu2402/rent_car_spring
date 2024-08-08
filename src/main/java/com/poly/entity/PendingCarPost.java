@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "PendingCarPost")
@@ -53,6 +54,7 @@ public class PendingCarPost {
     private Customer customer;
     
     @ManyToOne
-    @JoinColumn(name = "CarBrandID", insertable = false, updatable = false)
+    @JoinColumn(name = "CarBrandID")
+    @ToString.Exclude
     private CarBrand carBrand;
 }

@@ -38,7 +38,7 @@
 				<tr th:each="post : ${posts}">
 					<td th:text="${post.postID}"></td>
 					<td th:text="${post.carName}"></td>
-					 <td th:text="${post.brandID}"></td> 
+					 <td th:text="${post.carBrand.brandName}"></td> 
 					<!-- <td th:text="${car.carBrand != null ? car.carBrand.brandName : 'N/A'}"></td> -->
 					<td th:text="${post.color}"></td>
 					<td th:text="${post.address}"></td>
