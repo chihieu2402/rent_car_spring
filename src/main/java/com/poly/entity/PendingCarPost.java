@@ -35,6 +35,10 @@ public class PendingCarPost {
     @Column(name = "Image")
     private String image;
     
+    @Column(name = "brandid")
+    private int brandID;
+    
+    
 //    @Column(name = "OwnershipDocument")
 //    private String ownershipDocument;
 
@@ -49,6 +53,6 @@ public class PendingCarPost {
     private Customer customer;
     
     @ManyToOne
-    @JoinColumn(name = "CarBrandID")
+    @JoinColumn(name = "CarBrandID", insertable = false, updatable = false)
     private CarBrand carBrand;
 }

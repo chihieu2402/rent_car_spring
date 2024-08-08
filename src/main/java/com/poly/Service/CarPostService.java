@@ -40,10 +40,13 @@ public class CarPostService {
 
     public void approvePost(int postID) {
         PendingCarPost pendingPost = pendingCarPostDao.findById(postID).orElse(null);
+        System.out.println(pendingPost.getCarBrand());
+       CarBrand cb = brandDao.findById(pendingPost.getBrandID()).orElse(null);
+        
         if (pendingPost != null) {
             Car car = new Car();
             car.setCarName(pendingPost.getCarName());
-//            car.setCarBrand(pendingPost.getCarBrand().getBrandName()); 
+            car.setCarBrand(cb);
             car.setColor(pendingPost.getColor());
             car.setAddress(pendingPost.getAddress());
             car.setImage(pendingPost.getImage());
