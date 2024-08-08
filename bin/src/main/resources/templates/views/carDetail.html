@@ -14,7 +14,7 @@
     <section class="py-5 bg-light" th:object="${carDetail}">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://car-images.bauersecure.com/wp-images/12847/1752x1168/50-bmw-x6-2024-front-driving.jpg?mode=max&quality=90&scale=down" alt="..." ></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="*{image}" alt="..." ></div>
                 <div class="col-md-6">
                     <div class="small mb-1">
                       <span class="badge bg-success"> [[${ratingTB}]]</span>
@@ -37,18 +37,21 @@
 					<div class="lead">Color: [[*{color}]]</div>
 					<div class="d-flex">
 
-						<button class="btn btn-outline-dark flex-shrink-0" type="button">
-							<i class="bi-cart-fill me-1"></i> Book now
-						</button>
+						<a th:href="@{/booking/views/Booking(carID=${carDetail.carID})}" class="btn btn-outline-dark flex-shrink-0">
+   						<i class="bi-cart-fill me-1"></i> Book now
+						</a>
+
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+   <!-- phần carDetail -->
 
 
-
-<!-- phần comment -->
+<!-- phần comment cũ -->
 <section class="py-3 ">
     <div class="container  mt-2"> 
         <h2 class="fw-bolder mb-3">Review Car</h2>
@@ -67,7 +70,7 @@
                             <form th:action="@{/index/cars/{id}(id=${carDetail.carID})}" method="post" class="w-100">
                               <h5 class="m-0">Add a comment</h5>
                         
-                              <!--rating  -->
+                              
                               <div class="rating">
                                 <input value="5" name="rateCarDetail" id="star5" type="radio">
                                 <label title="text" for="star5"></label>
@@ -80,7 +83,7 @@
                                 <input value="1" name="rateCarDetail" id="star1" type="radio">
                                 <label title="text" for="star1"></label>
                               </div>
-                              <!-- rating -->
+                             
                               
                               <div data-mdb-input-init class="form-outline">
                                 <textarea class="form-control" id="textAreaExample" name="reviewText" rows="4" placeholder="What is your view?"></textarea>
@@ -103,7 +106,9 @@
         
     </div>
 </section>
+
     <!--phần comment  -->
+
 
 
     <!-- phần hiện thị comment -->
@@ -144,17 +149,13 @@
                   
                 </div>
                 <hr class="m-0 bg-success" style="height: 1px;">
-              </div>
-    
-    
-             
-            
+              </div>       
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!--phần hiển thị  -->
+    <!--phần hiển thị comment -->
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
  

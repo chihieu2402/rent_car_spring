@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+  
+   </head>
 
-<body>
+<body ng-app="app" ng-controller="ctrl">
 
     <div class="container mt-4">
-        <h1 class="mb-4">User Management</h1>
+<div class="custom-heading mb-4"> 
+    <h1 class="mb-1">User Management</h1>
+</div>	
 
         <!-- Form for user management -->
         <form th:action="@{/admin/account/create}" th:object="${account}" method="post">
@@ -31,6 +34,11 @@
                 <button type="submit" th:formaction="@{/admin/account/reset}" class="btn btn-success">Reset</button>
             </div>
         </form>
+        <!-- them file excel -->
+        <div>
+            <input type="file" onchange="angular.element(this).scope().import(this.files)">
+           
+        </div>
 
         <!-- Table for displaying users -->
         <table class="table table-striped table-bordered mt-5">
@@ -55,6 +63,7 @@
         </table>
     </div>
 
+   <script src="/views/js/excel-ctrl.js"></script>
 </body>
 
 </html>
