@@ -21,39 +21,45 @@ import com.poly.auth.UserRootService;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-	private final UserRootService userRootService;
-	// private final CustomOAuth2UserService customOAuth2UserService;
+  private final UserRootService userRootService;
+  //private final CustomOAuth2UserService customOAuth2UserService;
 
-	@Bean
-	public BCryptPasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+  @Bean
+  public BCryptPasswordEncoder getPasswordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
+  @Bean()
+  public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authConfig) throws Exception {
+    return authConfig.getAuthenticationManager();
+  }
+  @Bean
+  public DaoAuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    authProvider.setUserDetailsService(userRootService);
+    authProvider.setPasswordEncoder(getPasswordEncoder());
+    return authProvider;
+  }
 
-	@Bean()
-	public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authConfig) throws Exception {
-		return authConfig.getAuthenticationManager();
-	}
-
-	@Bean
-	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(userRootService);
-		authProvider.setPasswordEncoder(getPasswordEncoder());
-		return authProvider;
-	}
-
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http.csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(req -> req.requestMatchers("/admin/*", "/booking/views/*").authenticated()
-						.anyRequest().permitAll())
-				.formLogin(form -> form.loginPage("/index/login").usernameParameter("username")
-						.passwordParameter("password").loginProcessingUrl("/account/login-check")
-						.defaultSuccessUrl("/account/login/success").failureUrl("/account/login/failure"))
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests(
+            req -> req
+                .requestMatchers("/admin/*","/booking/views/*").authenticated()
+                .anyRequest().permitAll())
+        .formLogin(form -> form
+            .loginPage("/index/login")
+            .usernameParameter("username")
+            .passwordParameter("password")
+            .loginProcessingUrl("/account/login-check")
+            .defaultSuccessUrl("/account/login/success")
+            .failureUrl("/account/login/failure"))
 //        .oauth2Login(ou -> ou
 //            .authorizationEndpoint(e -> e.baseUri("/oauth2/authorization"))
 //            .redirectionEndpoint(e -> e.baseUri("/login/oauth2/code/*"))
 //            .userInfoEndpoint(e -> e.userService(customOAuth2UserService)))
-				.exceptionHandling(e -> e.accessDeniedPage("/accessDenied")).build();
-	}
+        .exceptionHandling(e -> e.accessDeniedPage("/accessDenied"))
+        .build();
+  }
 }

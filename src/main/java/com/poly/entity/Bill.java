@@ -27,7 +27,7 @@ public class Bill {
     @Column(name = "BillID")
     private int billID;
 
-    @Column(name="CustomerName")
+    @Column(name="CustomerName",columnDefinition = "NVARCHAR(255)")
     private String customerName;
 
     @Column(name="RentalDay")

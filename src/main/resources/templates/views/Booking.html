@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/views/layout::dynamic(~{::body})}">
 <head>
     <meta charset="UTF-8">
     <title>Book Car</title>
@@ -50,6 +50,9 @@
 						  
 					</div>
 
+
+<div class="container mt-4 mb-3">
+
 				</div>
 			</div>
 		</div>
@@ -59,6 +62,7 @@
 		
 	</section>
 <div class="container mt-4">
+
     <h2>Book Car</h2>
     
     <!-- Display success message if exists -->

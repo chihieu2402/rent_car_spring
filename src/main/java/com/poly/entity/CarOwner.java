@@ -29,6 +29,8 @@ public class CarOwner {
     @Column(name="CustomerID")
     private int customerID;
  
+    @Column(name="CustomerName")
+    private String customerName; // Thêm thuộc tính để lưu tên người cho thuê
 
     @OneToOne
     @JoinColumn(name = "CustomerID", insertable = false, updatable = false)
