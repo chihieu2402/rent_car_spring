@@ -1,7 +1,7 @@
 ﻿create database RentCar;
 go
 use RentCar;
-
+go
 
 INSERT INTO [dbo].[account]
            ([auth_id]
@@ -87,7 +87,7 @@ INSERT INTO car_brand(brand_name) VALUES
 ('Subaru'),
 ('Chevrolet');
 
-
+go
 
 INSERT INTO [dbo].[car]
            ([car_brandid]
@@ -103,7 +103,7 @@ INSERT INTO [dbo].[car]
      VALUES
            (1,'Aston Martin',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
 GO
-select * from car
+
 
 
 INSERT INTO [dbo].[bill]
@@ -125,7 +125,7 @@ INSERT INTO [dbo].[bill_detail]
            ,[rental_hour]
            ,[billid])
      VALUES
-           (N'20 Lê Quang Định, Quận Bình Thạnh, Tp. Hồ Chí Minh',3,'0378194280',10.0,2.0,1)
+           (N'20 Lê Quang Định, Quận Bình Thạnh, Tp. Hồ Chí Minh',1,'0378194280',10.0,2.0,1)
 GO
 INSERT INTO [dbo].[payment]
            ([amount]
