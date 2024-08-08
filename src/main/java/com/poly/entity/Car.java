@@ -61,7 +61,7 @@ public class Car {
 	private CarOwner carOwner;
 
 	@OneToOne
-	@JoinColumn(name = "DiscountID")
+	@JoinColumn(name = "DiscountID", insertable = false,updatable = false)
 	private Discount discount;
   
 	@ManyToOne

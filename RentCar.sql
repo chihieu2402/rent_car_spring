@@ -74,19 +74,59 @@ INSERT INTO [dbo].[car_owner]
      VALUES
            (1)
 GO
+USE [RentCar]
+GO
+
+INSERT INTO [dbo].[car_brand]
+           ([brand_name])
+     VALUES
+('Toyota'),
+('Honda'),
+('Ford'),
+('Mazda'),
+('Nissan'),
+('Hyundai'),
+('Kia'),
+('Mitsubishi'),
+('Subaru'),
+('Chevrolet'),
+('Aston Martin'),
+('Bugatti'),
+('Ferrari'),
+('Koenigsegg');
+GO
+	USE [RentCar]
+GO
+
 INSERT INTO [dbo].[car]
-           ([car_brand]
+           ([address]
+           ,[car_brand]
            ,[car_name]
-           ,[address]
            ,[color]
            ,[discountid]
+           ,[image]
            ,[price_hours_car]
            ,[status]
            ,[ownerid]
-           ,[reviewid],
-		   [image])
+           ,[reviewid]
+           ,[ownership_document]
+           ,[car_brandid])
      VALUES
-           ('Aston Martin','Aston Martin DB11',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
+           (N'21 To Ky'
+           ,<car_brand, varchar(255),>
+           ,<car_name, nvarchar(255),>
+           ,<color, varchar(255),>
+           ,<discountid, int,>
+           ,<image, varchar(255),>
+           ,<price_hours_car, float,>
+           ,<status, bit,>
+           ,<ownerid, int,>
+           ,<reviewid, int,>
+           ,<ownership_document, varchar(255),>
+           ,<car_brandid, int,>)
+GO
+
+
 GO
 select * from car
 INSERT INTO [dbo].[bill]
@@ -116,6 +156,8 @@ INSERT INTO [dbo].[payment]
      VALUES
            (10.0,1,'2024-09-30')
 GO
+
+
 -- test
 select * from car
 select * from account
