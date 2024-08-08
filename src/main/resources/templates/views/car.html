@@ -45,7 +45,7 @@
           <div class="col-md-4" th:each="car : ${cars}">
               <div class="car-wrap rounded ftco-animate">
                  <div class="img rounded d-flex align-items-end" style="position: relative; width: 348px; height: 200px; overflow: hidden;">
-    <img th:src="@{${car.image}}" alt="Car Image" style="width: 100%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <img th:src="${car.image}" alt="Car Image" style="width: 100%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 </div>
 
                   <div class="text">
@@ -62,9 +62,6 @@
                           <a th:href="@{/booking/views/Booking(carID=${car.carID})}" class="btn btn-outline-dark flex-shrink-0">
    						<i class="bi-cart-fill me-1"></i> Book now
 						</a>
-
-
-
                           <a th:href="@{/index/cars/{id}(id=${car.carID})}" class="btn btn-secondary py-2 ml-1">Details</a>
                       </p>
                   </div>

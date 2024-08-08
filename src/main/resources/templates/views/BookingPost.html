@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/views/admin :: dynamic(~{::body})}">
 <head>
     <meta charset="UTF-8">
     <title>Manage Bookings</title>
@@ -33,11 +33,11 @@
                     <td th:text="${booking.address}"></td>
                     <td th:text="${booking.status ? 'Approved' : 'Pending'}"></td>
                     <td>
-                        <form th:action="@{/index/approveBooking}" method="post" style="display: inline;">
+                        <form th:action="@{/admin/approveBooking}" method="post" style="display: inline;">
                             <input type="hidden" name="bookingID" th:value="${booking.bookingID}">
                             <button type="submit" class="btn btn-success">Approve</button>
                         </form>
-                        <form th:action="@{/index/rejectBooking}" method="post" style="display: inline;">
+                        <form th:action="@{/admin/rejectBooking}" method="post" style="display: inline;">
                             <input type="hidden" name="bookingID" th:value="${booking.bookingID}">
                             <button type="submit" class="btn btn-danger">Reject</button>
                         </form>

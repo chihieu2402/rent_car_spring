@@ -9,7 +9,7 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar" th:fragment="navbar">
 		<div class="container">
-			<a class="navbar-brand" href="">Car<span>Book</span></a>
+			<a class="navbar-brand" th:href="@{/index}">Car<span>Book</span></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
 			<!-- Hiển thị số lượng thông báo mới -->
 		</button>
 		<ul class="dropdown-menu">
-			<li><a class="dropdown-item" href="#">Forgot Password</a></li>
+			<li><a class="dropdown-item" href="#">Change Password</a></li>
 			<li><a class="dropdown-item" href="/index/postcar">Post Rentals</a></li>
 			<li><a class="dropdown-item" href="#">MailBox <span><i class="fa-regular fa-envelope"></i></span></a></li>
 			<li><a class="dropdown-item" href="/logout">Logout</a></li>

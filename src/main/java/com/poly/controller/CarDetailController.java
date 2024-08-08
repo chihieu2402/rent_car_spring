@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.poly.auth.UserRoot;
 import com.poly.dao.AccountDao;
 import com.poly.dao.CarDao;
 import com.poly.dao.CustomerDao;
@@ -53,7 +54,9 @@ public class CarDetailController {
 		model.addAttribute("reviewByCarID",reviewByCarID);
 		
 //		tim sao trung bình theo carID
-		double ratingTB = reviewDao.findAverageRatingByCarId(idcar);
+		
+		Double ratingTB = reviewDao.findAverageRatingByCarId(idcar);
+		
 		model.addAttribute("ratingTB",ratingTB);
 		 return "/views/carDetail";
 		
@@ -61,35 +64,27 @@ public class CarDetailController {
 	
 	
 	@RequestMapping( value = "/index/cars/{id}", method = RequestMethod.POST)
-	public String postCarDetail(Review review, @RequestParam("rateCarDetail") int rating, Model model,@PathVariable("id") int idcar) {
+	public String postCarDetail(Review review, @RequestParam("rateCarDetail") int rating, Model model,@PathVariable("id") int idcar, Authentication auth) {
 		// lấy thông tin của người dùng đã đăng nhập
-				 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			//		kiểm tra người dùng có tồn tại, đã đăng nhập chưa
-				 if (authentication != null && authentication.isAuthenticated()) {
-			            // Lấy tên người dùng
-			            String username = authentication.getName();
-			            model.addAttribute("username", username);
-			            
-			            // tim account đã đăng nhập, lấy id
-//			           Account accountLogin = accountDao.findByUserName(username).get();
-//			           int accountID =  accountLogin.getAccountID();
-//			           
-//			           review.setRating(rating);
-//			           review.setCustomerID(accountLogin.getAccountID());
-//			           review.setCarID(idcar);
-//			           review.setReviewDate(new Date());
-//			           
-//			           reviewDao.save(review);
+	
+
+				 	//	kiểm tra người dùng có tồn tại, đã đăng nhập chưa
+		 if (auth != null && auth.isAuthenticated()) {
+				UserRoot userRoot = (UserRoot) auth.getPrincipal();
+						String username =	userRoot.getName();
+					   Account accountLogin = accountDao.findByUserName(username).get();
+					     review.setRating(rating);
+				           review.setCustomerID(accountLogin.getAccountID());
+				           review.setCarID(idcar);
+				           review.setReviewDate(new Date());
+				           
+				           reviewDao.save(review);
+				       	return "redirect:/index/cars/{id}";
 			        }
-			       Account accountLogin = accountDao.findByUserName("ben123").get();
-			     review.setRating(rating);
-		           review.setCustomerID(accountLogin.getAccountID());
-		           review.setCarID(idcar);
-		           review.setReviewDate(new Date());
-		           
-		           reviewDao.save(review);
+			    return "redirect:/index/login";
+			    		
 		
-		return "redirect:/index/cars/{id}";
+	
 		
 	}
 }
