@@ -6,8 +6,8 @@ import lombok.Data;
 public class _enum {
   public enum RoleUserEnum {
     ADMIN(0),
-    USER(1),
-    OWNER(2);
+    OWNER(1),
+    USER(2);
 
     private final int value;
 
