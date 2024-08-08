@@ -67,13 +67,30 @@ INSERT INTO [dbo].[review]
      VALUES
            (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
 GO
+select * from review
 INSERT INTO [dbo].[car_owner]
            ([customerid])
      VALUES
            (1)
 GO
+
+--them du lieu carbrand
+INSERT INTO car_brand(brand_name) VALUES
+('Toyota'),
+('Honda'),
+('Ford'),
+('Mazda'),
+('Nissan'),
+('Hyundai'),
+('Kia'),
+('Mitsubishi'),
+('Subaru'),
+('Chevrolet');
+
+
+
 INSERT INTO [dbo].[car]
-           ([car_brand]
+           ([car_brandid]
            ,[car_name]
            ,[address]
            ,[color]
@@ -82,11 +99,13 @@ INSERT INTO [dbo].[car]
            ,[status]
            ,[ownerid]
            ,[reviewid],
-		   [image])
+			[image])
      VALUES
-           ('Aston Martin','Aston Martin DB11',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
+           (1,'Aston Martin',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
 GO
 select * from car
+
+
 INSERT INTO [dbo].[bill]
            ([customer_name]
            ,[rental_day]
@@ -97,6 +116,7 @@ INSERT INTO [dbo].[bill]
      VALUES
            (N'Phan Chí Hiếu','30','31',1,10000.0,1)
 GO
+select * from bill
 INSERT INTO [dbo].[bill_detail]
            ([address]
            ,[carid]
@@ -105,7 +125,7 @@ INSERT INTO [dbo].[bill_detail]
            ,[rental_hour]
            ,[billid])
      VALUES
-           (N'20 Lê Quang Địng, Quận Bình Thạnh, Tp. Hồ Chí Minh',1,'0378194280',10.0,2.0,1)
+           (N'20 Lê Quang Định, Quận Bình Thạnh, Tp. Hồ Chí Minh',3,'0378194280',10.0,2.0,1)
 GO
 INSERT INTO [dbo].[payment]
            ([amount]
@@ -114,6 +134,11 @@ INSERT INTO [dbo].[payment]
      VALUES
            (10.0,1,'2024-09-30')
 GO
+
+
+
+
+
 -- test
 select * from car
 select * from account
@@ -121,3 +146,4 @@ select * from review
 select * from customer
 select * from booking
 drop  table booking
+select * from bill_detail

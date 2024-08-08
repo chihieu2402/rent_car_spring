@@ -73,6 +73,7 @@ public class CarContronller {
 	public String createCar(@ModelAttribute Car car, @RequestParam("carBrandID") int carBrandID,
 			@RequestParam("imageFile") MultipartFile imageFile) {
 		CarBrand carBrand = carBrandSerivce.findById(carBrandID).orElse(null);
+		
 		car.setCarBrand(carBrand);
 		handleImageUpload(car, imageFile);
 		carDao.save(car);
@@ -89,7 +90,7 @@ public class CarContronller {
 			handleImageUpload(car, imageFile);
 		} else {
 
-Car existingCar = carDao.findById(car.getCarID()).orElse(null);
+			Car existingCar = carDao.findById(car.getCarID()).orElse(null);
 			if (existingCar != null) {
 				car.setImage(existingCar.getImage());
 			}
