@@ -96,9 +96,6 @@ public class Car {
 	@Column(name = "Status")
 	private boolean status;
 
-	@Column(name = "DiscountID")
-	private int discountID;
-
 	@ManyToOne
 	@JoinColumn(name = "ReviewID")
 	private Review review;
@@ -110,10 +107,7 @@ public class Car {
 	@JoinColumn(name = "OwnerID")
 	private CarOwner carOwner;
 
-	@OneToOne
-	@JoinColumn(name = "DiscountID", insertable = false, updatable = false)
-	private Discount discount;
-  
+
 	@ManyToOne
 	@JoinColumn(name = "CarBrandID")
 	private CarBrand carBrand;
@@ -124,5 +118,8 @@ public class Car {
 	public Car get(int i) {
 		return null;
 	}
+	
+	@OneToMany(mappedBy = "car")
+	private List<Booking> bookings;
 
 }

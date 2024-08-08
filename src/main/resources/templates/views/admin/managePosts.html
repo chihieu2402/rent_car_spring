@@ -30,7 +30,7 @@
 					<th>Địa chỉ</th>
 					<th>Hình Ảnh</th>
 					<th>Giá Theo Giờ</th>
-					<th>Tên Người Cho Thuê</th>
+					
 					<th>Hành Động</th>
 				</tr>
 			</thead>
@@ -38,7 +38,8 @@
 				<tr th:each="post : ${posts}">
 					<td th:text="${post.postID}"></td>
 					<td th:text="${post.carName}"></td>
-					<td th:text="${post.carBrand.brandName}"></td>
+					 <td th:text="${post.brandID}"></td> 
+					<!-- <td th:text="${car.carBrand != null ? car.carBrand.brandName : 'N/A'}"></td> -->
 					<td th:text="${post.color}"></td>
 					<td th:text="${post.address}"></td>
 					<td><img th:src="@{${post.image}}" alt="Car Image"
@@ -46,7 +47,6 @@
 					<!--  <td>
                         <img th:src="@{${post.ownershipDocument}}" alt="Car Image" style="width: 100px; height: auto;">
                     </td> -->
-					<td th:text="${post.priceHoursCar}"></td>
 					<td th:text="${post.priceHoursCar}"></td>
 					<td><div class="btn-group">
 							<!-- Duyệt bài đăng -->

@@ -12,6 +12,5 @@ import com.poly.entity.CarBrand;
 public interface CarBrandDao extends JpaRepository<CarBrand, Integer> {
 	CarBrand findByBrandName(String brandName);
 
-	Optional<CarBrand> findById(int id);
 }
 
