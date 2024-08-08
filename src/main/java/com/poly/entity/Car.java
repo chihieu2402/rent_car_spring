@@ -112,7 +112,7 @@ public class Car {
 	private Review review;
 
 	@OneToOne
-	@JoinColumn(name = "DiscountID", insertable = false, updatable = false)
+	@JoinColumn(name = "DiscountID")
 	private Discount discount;
 	
 

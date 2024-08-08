@@ -56,7 +56,7 @@
                       </div>
                       <div class="d-flex justify-content-between">
                           <h5>[[${car.address}]]</h5>
-                          <p>[[${car.status} ? 'Trống' : 'Bận']]</p>
+                          <p>[[${car.status} ? 'Free' : 'Busy']]</p>
                       </div>
                       <p class="d-flex mb-0 d-block">
                           <a th:href="@{/booking/views/Booking(carID=${car.carID})}" class="btn btn-outline-dark flex-shrink-0">
