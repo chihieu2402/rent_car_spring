@@ -70,21 +70,19 @@
 						</select>
 					</div>
 					<div class="form-group mb-3">
-						<label for="ownerID">Owner ID:</label> <input
-							th:value="${car.carOwner != null ? car.carOwner.ownerID : ''}"
+						<label for="ownerID">Owner ID:</label> <input th:value="${car.carOwner != null ? car.carOwner.ownerID : ''}"
 							name="ownerID" type="text" class="form-control" id="ownerID"
 							placeholder="Enter owner ID">
 					</div>
-					<div class="form-group">
-						<label for="imageFile">Car Image:</label> <input name="imageFile"
-							type="file" class="form-control-file" id="imageFile"
-							accept="image/*">
-					</div>
+					
+                    <div class="form-group">
+                        <label for="imageFile">Car Image:</label>
+                        <input name="imageFile" type="file" class="form-control-file" id="imageFile" accept="image/*">
+                    </div>
+
+
 				</div>
-
-
 			</div>
-
 			<div class="btn-group mt-3">
 				<button type="submit" class="btn btn-info">Add</button>
 				<button type="submit" th:formaction="@{/admin/car/update}"
@@ -122,8 +120,8 @@
 					<td th:text="${car.status ? 'Active' : 'Inactive'}"></td>
 					<td th:text="${car.discountID}"></td>
 					<td th:text="${car.carOwner != null ? car.carOwner.ownerID : ''}"></td>
-					<td><img th:src="@{${car.image}}" alt="Car Image"
-						style="width: 100px; height: auto;"></td>
+					   <td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>
+
 					<td><a th:href="@{/admin/car/edit/{id}(id=${car.carID})}"
 						class="btn btn-primary">Edit</a></td>
 				</tr>

@@ -1,8 +1,6 @@
-﻿CREATE DATABASE RentCar;
-GO
-USE RentCar;
-
-GO
+﻿create database RentCar;
+go
+use RentCar;
 
 
 INSERT INTO [dbo].[account]
@@ -69,17 +67,24 @@ INSERT INTO [dbo].[review]
      VALUES
            (1,4,'2024-07-30',N'Thiên lý ơi em có thể ở lại đây không',1)
 GO
+select * from review
 INSERT INTO [dbo].[car_owner]
            ([customerid])
      VALUES
            (1)
 GO
+<<<<<<< HEAD
 USE [RentCar]
 GO
 
 INSERT INTO [dbo].[car_brand]
            ([brand_name])
      VALUES
+=======
+
+--them du lieu carbrand
+INSERT INTO car_brand(brand_name) VALUES
+>>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
 ('Toyota'),
 ('Honda'),
 ('Ford'),
@@ -89,6 +94,7 @@ INSERT INTO [dbo].[car_brand]
 ('Kia'),
 ('Mitsubishi'),
 ('Subaru'),
+<<<<<<< HEAD
 ('Chevrolet'),
 ('Aston Martin'),
 ('Bugatti'),
@@ -101,6 +107,14 @@ GO
 INSERT INTO [dbo].[car]
            ([address]
            ,[car_brand]
+=======
+('Chevrolet');
+
+
+
+INSERT INTO [dbo].[car]
+           ([car_brandid]
+>>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
            ,[car_name]
            ,[color]
            ,[discountid]
@@ -108,6 +122,7 @@ INSERT INTO [dbo].[car]
            ,[price_hours_car]
            ,[status]
            ,[ownerid]
+<<<<<<< HEAD
            ,[reviewid]
            ,[ownership_document]
            ,[car_brandid])
@@ -127,8 +142,16 @@ INSERT INTO [dbo].[car]
 GO
 
 
+=======
+           ,[reviewid],
+			[image])
+     VALUES
+           (1,'Aston Martin',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
+>>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
 GO
 select * from car
+
+
 INSERT INTO [dbo].[bill]
            ([customer_name]
            ,[rental_day]
@@ -139,6 +162,7 @@ INSERT INTO [dbo].[bill]
      VALUES
            (N'Phan Chí Hiếu','30','31',1,10000.0,1)
 GO
+select * from bill
 INSERT INTO [dbo].[bill_detail]
            ([address]
            ,[carid]
@@ -147,7 +171,7 @@ INSERT INTO [dbo].[bill_detail]
            ,[rental_hour]
            ,[billid])
      VALUES
-           (N'20 Lê Quang Địng, Quận Bình Thạnh, Tp. Hồ Chí Minh',1,'0378194280',10.0,2.0,1)
+           (N'20 Lê Quang Định, Quận Bình Thạnh, Tp. Hồ Chí Minh',3,'0378194280',10.0,2.0,1)
 GO
 INSERT INTO [dbo].[payment]
            ([amount]
@@ -158,8 +182,17 @@ INSERT INTO [dbo].[payment]
 GO
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
 -- test
 select * from car
 select * from account
 select * from review
 select * from customer
+select * from booking
+drop  table booking
+select * from bill_detail

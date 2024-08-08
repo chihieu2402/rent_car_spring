@@ -1,3 +1,4 @@
+
 package com.poly.dao;
 
 import java.util.Optional;
@@ -13,3 +14,4 @@ public interface CarBrandDao extends JpaRepository<CarBrand, Integer> {
 
 	Optional<CarBrand> findById(int id);
 }
+

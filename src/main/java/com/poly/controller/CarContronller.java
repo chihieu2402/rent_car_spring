@@ -73,6 +73,7 @@ public class CarContronller {
 	public String createCar(@ModelAttribute Car car, @RequestParam("carBrandID") int carBrandID,
 			@RequestParam("imageFile") MultipartFile imageFile) {
 		CarBrand carBrand = carBrandSerivce.findById(carBrandID).orElse(null);
+		
 		car.setCarBrand(carBrand);
 		handleImageUpload(car, imageFile);
 		carDao.save(car);
@@ -99,11 +100,27 @@ public class CarContronller {
 	}
 
 	// hàm xóa
+//	@PostMapping("/car/delete")
+//	public String deleteCar(@RequestParam("carID") int carID) {
+//		carDao.deleteById(carID);
+//		return "redirect:/admin/car";
+//	}
+//			Car existingCar = carDao.findById(car.getCarID()).orElse(null);
+//			if (existingCar != null) {
+//				car.setImage(existingCar.getImage());
+//			}
+//		}
+//		carDao.save(car);
+//		return "redirect:/admin/car";
+//	}
+
+//	// hàm xóa
 	@PostMapping("/car/delete")
 	public String deleteCar(@RequestParam("carID") int carID) {
 		carDao.deleteById(carID);
 		return "redirect:/admin/car";
 	}
+
 
 	private void handleImageUpload(Car car, MultipartFile imageFile) {
 		if (!imageFile.isEmpty()) {
@@ -117,4 +134,7 @@ public class CarContronller {
 			}
 		}
 	}
+
+
 }
+

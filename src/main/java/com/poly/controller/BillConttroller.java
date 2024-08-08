@@ -88,6 +88,6 @@ public class BillConttroller {
 
     private double getPricePerHour() {
         // Assuming a fixed price per hour for simplicity, modify as needed
-        return 10.0; // Change this to retrieve from your Car entity or other source
+        return 10000.0; // Change this to retrieve from your Car entity or other source
     }
 }
