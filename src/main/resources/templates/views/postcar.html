@@ -53,7 +53,7 @@
 									th:text="${brand.brandName}"></option>
 							</th:block>
 						</select> -->
-						<select class="form-control" id="carBrand" name="brandID" required>
+						<select class="form-control" id="carBrand" name="carBrand.carBrandID" required>
                         <option value="">Select Car Brand</option>
                         <th:block th:each="brand : ${carBrands}">
                             <option th:value="${brand.carBrandID}" th:text="${brand.brandName}"

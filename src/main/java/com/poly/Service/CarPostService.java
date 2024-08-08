@@ -39,9 +39,9 @@ public class CarPostService {
     }
 
     public void approvePost(int postID) {
-        PendingCarPost pendingPost = pendingCarPostDao.findById(postID).orElse(null);
-        System.out.println(pendingPost.getCarBrand());
-       CarBrand cb = brandDao.findById(pendingPost.getBrandID()).orElse(null);
+        PendingCarPost pendingPost = pendingCarPostDao.findById(postID).get();
+      int i =  pendingPost.getBrandID();
+       CarBrand cb = brandDao.findById(i).get();
         
         if (pendingPost != null) {
             Car car = new Car();

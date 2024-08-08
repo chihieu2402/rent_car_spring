@@ -53,6 +53,6 @@ public class PendingCarPost {
     private Customer customer;
     
     @ManyToOne
-    @JoinColumn(name = "CarBrandID", insertable = false, updatable = false)
+    @JoinColumn(name = "CarBrandID")
     private CarBrand carBrand;
 }
