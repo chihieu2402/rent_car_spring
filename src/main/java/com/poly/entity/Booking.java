@@ -47,4 +47,8 @@ public class Booking {
 
     @Column(name = "Status")
     private Boolean status; // To track approval status (true if approved, false otherwise)
+    
+    @ManyToOne
+    @JoinColumn(name = "CarID",insertable=false, updatable=false)
+    private Car car; // To link to the Car entity via CarID. This is a one-to-many relationship.;
 }

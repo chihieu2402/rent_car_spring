@@ -69,11 +69,6 @@ INSERT INTO [dbo].[car_owner]
            (1)
 GO
 
-USE [RentCar]
-GO
-
-USE [RentCar]
-GO
 
 INSERT INTO [dbo].[car_brand]
            ([brand_name])
@@ -117,14 +112,14 @@ INSERT INTO [dbo].[bill_detail]
            ,[rental_hour]
            ,[billid])
      VALUES
-           (N'20 Lê Quang Địng, Quận Bình Thạnh, Tp. Hồ Chí Minh',2,'0378194280',10.0,2.0,2)
+           (N'20 Lê Quang Địng, Quận Bình Thạnh, Tp. Hồ Chí Minh',1,'0378194280',10.0,2.0,1)
 GO
 INSERT INTO [dbo].[payment]
            ([amount]
            ,[billid]
            ,[payment_date])
      VALUES
-           (10.0,2,'2024-09-30')
+           (10.0,1,'2024-09-30')
 GO
 -- test
 select * from bill

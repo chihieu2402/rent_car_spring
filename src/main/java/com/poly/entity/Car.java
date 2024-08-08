@@ -118,5 +118,8 @@ public class Car {
 	public Car get(int i) {
 		return null;
 	}
+	
+	@OneToMany(mappedBy = "car")
+	private List<Booking> bookings;
 
 }
