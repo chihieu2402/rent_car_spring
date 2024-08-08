@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -66,10 +67,10 @@ public class PostCarController {
 			@RequestParam("imageName") MultipartFile imageFile,
 
 			BindingResult result) throws IOException {
+//		System.out.println(pendingCarPost.getCarBrand());
 		if (result.hasErrors()) {
 			return "views/postcar";
 		}
-
 		try {
 			if (!imageFile.isEmpty()) {
 				String fileName = imageFile.getOriginalFilename();
@@ -85,10 +86,7 @@ public class PostCarController {
 //                pendingCarPost.setOwnershipDocument("/images/" + fileName);
 //            }
 		}
-
- catch (IOException e) {
-
-	
+		catch (IOException e) {
 
 			e.printStackTrace();
 		}
@@ -100,7 +98,9 @@ public class PostCarController {
 	@RequestMapping(value = "/index/managePosts", method = RequestMethod.GET)
 	public String managePosts(Model model) {
 		String path = app.getRealPath("/images/");
-		model.addAttribute("posts", carPostService.getAllPendingPosts());
+		List<PendingCarPost> pd = carPostService.getAllPendingPosts();
+		
+		model.addAttribute("posts", pd);
 		return "views/admin/managePosts";
 	}
 
@@ -117,6 +117,3 @@ public class PostCarController {
 	}
 
 }
-
-
-
