@@ -1,7 +1,11 @@
 package com.poly.controller;
 
-import com.poly.dao.CarDao;
-import com.poly.entity.Car;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -13,105 +17,104 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
-
+import com.poly.Service.CarBrandSerivce;
 import com.poly.Service.FileManagerService;
 import com.poly.dao.CarDao;
 import com.poly.entity.Car;
+import com.poly.entity.CarBrand;
 
 import jakarta.servlet.ServletContext;
 
-import com.poly.Service.FileManagerService;
-
-
 @RequestMapping(value = "/admin")
 @PreAuthorize("hasAuthority('ADMIN')")
-
 @Controller
-
 public class CarContronller {
 
-    private final String UPLOAD_DIR = "src/main/resources/static/images/";
+	private final String UPLOAD_DIR = "src/main/resources/static/images/";
 
-    @Autowired
-    private CarDao carDao;
+	@Autowired
+	private CarDao carDao;
 
+	@Autowired
+	private FileManagerService fileManagerService;
 
-    @Autowired
-    private FileManagerService fileManagerService;
-    
-    
+	@Autowired
+	CarBrandSerivce carBrandSerivce;
+
 	@Autowired
 	ServletContext app;
 
+	@GetMapping("/car")
+	public String car(Model model) {
+		String path = app.getRealPath("/images/");
+		List<Car> cars = carDao.findAll();
+		model.addAttribute("cars", cars);
+		model.addAttribute("car", new Car());
+		model.addAttribute("listCarbrand", carBrandSerivce.findAll());
+		return "views/admin/Car";
+	}
 
-    @GetMapping("/car")
-    public String car(Model model) {
-    	 String path = app.getRealPath("/images/"); 
-    	    List<Car> cars = carDao.findAll();
-    	    model.addAttribute("cars", cars);
-    	    model.addAttribute("car", new Car()); // for the form
-    	    return "views/admin/Car"; // Main template with dynamic content
-    }
+	@GetMapping("/car/edit/{id}")
+	public String editCar(@PathVariable int id, Model model) {
+		Car car = carDao.findById(id).orElse(null);
+		List<Car> cars = carDao.findAll();
+		model.addAttribute("listCarbrand", carBrandSerivce.findAll());
+		model.addAttribute("cars", cars);
 
-    @GetMapping("/car/edit/{id}")
-    public String editCar(@PathVariable int id, Model model) {
-        Car car = carDao.findById(id).orElse(null);
-        List<Car> cars = carDao.findAll();
-        model.addAttribute("cars", cars);
-        if (car != null) {
-            model.addAttribute("car", car);
-        }
-        return "views/admin/Car"; // Trả về view để chỉnh sửa
-    }
+		if (car != null) {
+			model.addAttribute("selectedCarBrand", car.getCarBrand().getCarBrandID());
+		}
+		model.addAttribute("car", car);
+		return "views/admin/Car";
+	}
 
-    @PostMapping("/car/create")
-    public String createCar(@ModelAttribute Car car, @RequestParam("imageFile") MultipartFile imageFile) {
-        handleImageUpload(car, imageFile);
-        carDao.save(car);
-        return "redirect:/admin/car";
-    }
+	// hàm add
+	@PostMapping("/car/create")
+	public String createCar(@ModelAttribute Car car, @RequestParam("carBrandID") int carBrandID,
+			@RequestParam("imageFile") MultipartFile imageFile) {
+		CarBrand carBrand = carBrandSerivce.findById(carBrandID).orElse(null);
+		car.setCarBrand(carBrand);
+		handleImageUpload(car, imageFile);
+		carDao.save(car);
+		return "redirect:/admin/car";
+	}
 
-    @PostMapping("/car/update")
-    public String updateCar(@ModelAttribute Car car, @RequestParam("imageFile") MultipartFile imageFile) {
-        // Kiểm tra xem file ảnh có được tải lên hay không
-        if (!imageFile.isEmpty()) {
-            handleImageUpload(car, imageFile); // Nếu có file mới, xử lý tải lên
-        } else {
-            // Nếu không có file mới, không thay đổi trường ảnh
-            Car existingCar = carDao.findById(car.getCarID()).orElse(null);
-            if (existingCar != null) {
-                car.setImage(existingCar.getImage()); // Giữ lại ảnh cũ
-            }
-        }
-        carDao.save(car);
-        return "redirect:/admin/car";
-    }
+	// hàm update
+	@PostMapping("/car/update")
+	public String updateCar(@ModelAttribute Car car, @RequestParam("carBrandID") int carBrandID,
+			@RequestParam("imageFile") MultipartFile imageFile) {
+		CarBrand carBrand = carBrandSerivce.findById(carBrandID).orElse(null);
+		car.setCarBrand(carBrand);
+		if (!imageFile.isEmpty()) {
+			handleImageUpload(car, imageFile);
+		} else {
 
+			Car existingCar = carDao.findById(car.getCarID()).orElse(null);
+			if (existingCar != null) {
+				car.setImage(existingCar.getImage());
+			}
+		}
+		carDao.save(car);
+		return "redirect:/admin/car";
+	}
 
-    @PostMapping("/car/delete")
-    public String deleteCar(@RequestParam("carID") int carID) {
-        carDao.deleteById(carID);
-        return "redirect:/admin/car";
-    }
+	// hàm xóa
+	@PostMapping("/car/delete")
+	public String deleteCar(@RequestParam("carID") int carID) {
+		carDao.deleteById(carID);
+		return "redirect:/admin/car";
+	}
 
-    private void handleImageUpload(Car car, MultipartFile imageFile) {
-        if (!imageFile.isEmpty()) {
-            try {
-                String fileName = imageFile.getOriginalFilename();
-                Path uploadPath = Paths.get(UPLOAD_DIR + fileName);
-                Files.copy(imageFile.getInputStream(), uploadPath, StandardCopyOption.REPLACE_EXISTING);
-                car.setImage("/images/" + fileName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	private void handleImageUpload(Car car, MultipartFile imageFile) {
+		if (!imageFile.isEmpty()) {
+			try {
+				String fileName = imageFile.getOriginalFilename();
+				Path uploadPath = Paths.get(UPLOAD_DIR + fileName);
+				Files.copy(imageFile.getInputStream(), uploadPath, StandardCopyOption.REPLACE_EXISTING);
+				car.setImage("/images/" + fileName);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

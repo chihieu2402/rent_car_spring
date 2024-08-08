@@ -47,9 +47,8 @@
 						<label for="carBrand">Car Brand</label> <select
 							class="form-control" id="carBrand" name="carBrand" required>
 							<option value="">Select Car Brand</option>
-							<!-- Duyệt qua danh sách carBrands và thêm vào combobox -->
 							<th:block th:each="brand : ${carBrands}">
-								<option th:value="${brand.carBrandID}"
+								<option th:value="${brand.brandName}"
 									th:text="${brand.brandName}"></option>
 							</th:block>
 						</select>
@@ -67,17 +66,16 @@
 							class="form-control-file" id="imageName" name="imageName"
 							required>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="ownershipDocument">Ownership Document</label> <input
 							type="file" class="form-control-file" id="ownershipDocument"
 							name="ownershipDocument" required>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="priceHoursCar">Hourly Rate</label> <input
 							type="number" class="form-control" id="priceHoursCar"
 							name="priceHoursCar" step="0.01" required>
 					</div>
-					<!-- Car Owner ID will be set in the controller, no need to include in the form -->
 					<button type="submit" class="btn btn-primary mt-3">Submit</button>
 				</form>
 
