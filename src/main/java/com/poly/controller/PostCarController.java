@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.poly.Service.CarPostService;
 import com.poly.dao.PendingCarPostDao;
 import com.poly.entity.CarBrand;
 import com.poly.entity.PendingCarPost;
+
 import jakarta.servlet.ServletContext;
 
 @Controller
@@ -81,7 +84,12 @@ public class PostCarController {
 //                Files.copy(ownershipDocumentFile.getInputStream(), uploadPath, StandardCopyOption.REPLACE_EXISTING);
 //                pendingCarPost.setOwnershipDocument("/images/" + fileName);
 //            }
-} catch (IOException e) {
+		}
+
+ catch (IOException e) {
+
+	
+
 			e.printStackTrace();
 		}
 
@@ -107,4 +115,8 @@ public class PostCarController {
 		carPostService.rejectPost(postID);
 		return "redirect:/index/managePosts";
 	}
+
 }
+
+
+

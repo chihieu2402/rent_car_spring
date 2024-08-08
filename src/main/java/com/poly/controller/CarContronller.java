@@ -88,6 +88,7 @@ public class CarContronller {
 		if (!imageFile.isEmpty()) {
 			handleImageUpload(car, imageFile);
 		} else {
+
 Car existingCar = carDao.findById(car.getCarID()).orElse(null);
 			if (existingCar != null) {
 				car.setImage(existingCar.getImage());
@@ -98,11 +99,27 @@ Car existingCar = carDao.findById(car.getCarID()).orElse(null);
 	}
 
 	// hàm xóa
+//	@PostMapping("/car/delete")
+//	public String deleteCar(@RequestParam("carID") int carID) {
+//		carDao.deleteById(carID);
+//		return "redirect:/admin/car";
+//	}
+//			Car existingCar = carDao.findById(car.getCarID()).orElse(null);
+//			if (existingCar != null) {
+//				car.setImage(existingCar.getImage());
+//			}
+//		}
+//		carDao.save(car);
+//		return "redirect:/admin/car";
+//	}
+
+//	// hàm xóa
 	@PostMapping("/car/delete")
 	public String deleteCar(@RequestParam("carID") int carID) {
 		carDao.deleteById(carID);
 		return "redirect:/admin/car";
 	}
+
 
 	private void handleImageUpload(Car car, MultipartFile imageFile) {
 		if (!imageFile.isEmpty()) {
@@ -116,4 +133,7 @@ Car existingCar = carDao.findById(car.getCarID()).orElse(null);
 			}
 		}
 	}
+
+
 }
+

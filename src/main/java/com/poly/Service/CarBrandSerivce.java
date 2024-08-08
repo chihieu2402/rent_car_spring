@@ -1,3 +1,4 @@
+
 package com.poly.Service;
 
 import java.util.List;
@@ -8,3 +9,4 @@ public interface CarBrandSerivce {
     Optional<CarBrand> findById(int id);
     List<CarBrand> findAll();
 }
+
