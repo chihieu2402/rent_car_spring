@@ -73,7 +73,6 @@ public class CarContronller {
 	public String createCar(@ModelAttribute Car car, @RequestParam("carBrandID") int carBrandID,
 			@RequestParam("imageFile") MultipartFile imageFile) {
 		CarBrand carBrand = carBrandSerivce.findById(carBrandID).orElse(null);
-		
 		car.setCarBrand(carBrand);
 		handleImageUpload(car, imageFile);
 		carDao.save(car);
@@ -97,6 +96,7 @@ public class CarContronller {
 		}
 		carDao.save(car);
 		return "redirect:/admin/car";
+		
 	}
 
 	// hàm xóa
