@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{/views/admin :: dynamic(~{::body})}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bill Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-
 <body>
-
     <div class="container mt-4">
-        <h1 class="mb-4">Bill Management</h1>
-
+        <div class="custom-heading mb-4"> 
+            <h1 class="mb-1">Bill Management</h1>
+        </div>  
         <!-- Form for bill management -->
         <form th:action="@{/admin/bill/create}" th:object="${bill}" method="post">
-           
+            <input type="hidden" th:field="*{billID}"/> <!-- Hidden input for Bill ID -->
             <div class="form-group">
                 <label for="customerName">Customer Name:</label>
                 <input th:value="${bill.customerName}" name="customerName" type="text" class="form-control" id="customerName" placeholder="Enter customer name" required>
@@ -32,14 +30,20 @@
                 <label for="totalPrice">Total Price:</label>
                 <input th:value="${bill.totalPrice}" name="totalPrice" type="number" step="0.01" class="form-control" id="totalPrice" placeholder="Enter total price" required>
             </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select th:field="*{status}" class="form-control" id="status" required>
+                    <option th:value="true" th:text="'Paid'"></option>
+                    <option th:value="false" th:text="'Unpaid'"></option>
+                </select>
+            </div>
             <div class="btn-group mt-3">
                 <button type="submit" class="btn btn-info">Add</button>
                 <button type="submit" th:formaction="@{/admin/bill/update}" class="btn btn-warning">Update</button>
                 <button type="submit" th:formaction="@{/admin/bill/delete/{id}(id=${bill.billID})}" class="btn btn-danger">Delete</button>
                 <button type="reset" class="btn btn-success">Reset</button>
             </div>
-        </form> 
-
+        </form>
         <!-- Table for displaying bills -->
         <table class="table table-striped table-bordered mt-5">
             <thead class="thead-dark">
@@ -49,7 +53,8 @@
                     <th>Rental Day</th>
                     <th>Return Day</th>
                     <th>Total Price</th>
-                  
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,12 +64,11 @@
                     <td th:text="${bill.rentalDay}"></td>
                     <td th:text="${bill.returnDay}"></td>
                     <td th:text="${bill.totalPrice}"></td>
-                   
+                    <td th:text="${bill.status ? 'Paid' : 'Unpaid'}"></td>
+                    <td><a th:href="@{/admin/bill/edit/{id}(id=${bill.billID})}" class="btn btn-primary">Edit</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </body>
-
 </html>

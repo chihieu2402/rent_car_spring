@@ -1,7 +1,5 @@
 package com.poly.entity;
 
-import java.util.Date;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
@@ -9,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Booking")
@@ -27,14 +26,13 @@ public class Booking {
     @Column(name = "CustomerName")
     private String customerName;
 
-    
     @Column(name = "RentalDay")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date rentalDay; // Removed @Temporal annotation as it's not needed for java.sql.Date
+    private LocalDate rentalDay;
 
     @Column(name = "ReturnDay")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date returnDay; // Removed @Temporal annotation as it's not needed for java.sql.Date
+    private LocalDate returnDay;
     
     @Column(name = "TotalPrice")
     private Double totalPrice;
@@ -46,9 +44,9 @@ public class Booking {
     private String address;
 
     @Column(name = "Status")
-    private Boolean status; // To track approval status (true if approved, false otherwise)
-    
+    private Boolean status;
+
     @ManyToOne
-    @JoinColumn(name = "CarID",insertable=false, updatable=false)
-    private Car car; // To link to the Car entity via CarID. This is a one-to-many relationship.;
+    @JoinColumn(name = "CarID", insertable = false, updatable = false)
+    private Car car;
 }

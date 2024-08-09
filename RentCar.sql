@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+CREATE DATABASE RentCar;
+=======
 ﻿CREATE DATABASE RentCar;
+>>>>>>> f4087c42ecab40a866bd0e76ef9b6be1c8b99084
 GO
 USE RentCar;
 GO
@@ -146,6 +150,10 @@ INSERT INTO [dbo].[payment]
            ,[billid]
            ,[payment_date])
      VALUES
+<<<<<<< HEAD
+           (10.0,1,'2024-09-30')
+GO
+=======
            (10.0, 1, '2024-09-30');
 GO
 
@@ -156,3 +164,4 @@ SELECT * FROM [dbo].[customer];
 SELECT * FROM [dbo].[pending_car_post];
 SELECT * FROM [dbo].[car_brand];
 select * from car
+>>>>>>> f4087c42ecab40a866bd0e76ef9b6be1c8b99084
