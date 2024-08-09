@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{/views/admin :: dynamic(~{::body})}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,12 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="mb-4 text-center">Customer Management</h1> <!-- Căn giữa tiêu đề -->
+
+<div class="custom-heading mb-4"> 
+    <h1 class="mb-1">Customer Management</h1>
+</div>	
+
+
 
         <!-- Thông báo -->
         <div th:if="${successMessage}" class="alert alert-success">
@@ -17,6 +23,7 @@
         <div th:if="${errorMessage}" class="alert alert-danger">
             <span th:text="${errorMessage}"></span>
         </div>
+
 
         <!-- Form for customer management -->
         <form th:action="@{/admin/customer/create}" th:object="${customer}" method="post">
@@ -51,13 +58,15 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-3"> <!-- Căn giữa nhóm nút -->
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-info">Add</button>
-                    <button type="submit" th:formaction="@{/admin/customer/update}" class="btn btn-warning">Update</button>
-                    <button type="submit" th:formaction="@{/admin/customer/delete/{id}(id=${customer.customerID})}" class="btn btn-danger">Delete</button>
-                    <button type="submit" th:formaction="@{/admin/customer/reset}" class="btn btn-success">Reset</button>
-                </div>
+
+           <div class="btn-group mt-3">
+                <button type="submit" class="btn btn-info">Add</button>
+                <button type="submit" th:formaction="@{/admin/customer/update}" class="btn btn-warning">Update</button>
+                <button type="submit" th:formaction="@{/admin/customer/delete/{id}(id=${customer.customerID})}" class="btn btn-danger">Delete</button>
+                <button type="submit" th:formaction="@{/admin/customer/reset}" class="btn btn-success">Reset</button>
+
+
+
             </div>
         </form>
 

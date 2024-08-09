@@ -53,9 +53,12 @@ public class CarDetailController {
 		List<Review> reviewByCarID = reviewDao.findByCarID(idcar);
 		model.addAttribute("reviewByCarID",reviewByCarID);
 		
-//		tim sao trung bình theo carID
-		
-		Double ratingTB = reviewDao.findAverageRatingByCarId(idcar);
+//		tim sao trung bình theo carID		
+		Double ratingTB = reviewDao.findByCarID(idcar).stream()
+	            .mapToDouble(Review::getRating)   // chuyển kiểu
+	            .average()              // trung bình
+	            .orElse(0.0);
+		ratingTB = Math.round(ratingTB * 100.0) / 100.0;  // làm tròn 2 chữ số thập phân
 		
 		model.addAttribute("ratingTB",ratingTB);
 		 return "/views/carDetail";

@@ -1,11 +1,13 @@
 package com.poly.entity;
 
-import java.sql.Date;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Booking")
@@ -21,21 +23,30 @@ public class Booking {
     @Column(name = "CarID")
     private int carID;
 
-    @Column(name = "CustomerName",columnDefinition = "NVARCHAR(255)")
+    @Column(name = "CustomerName")
     private String customerName;
 
     @Column(name = "RentalDay")
-    private Date rentalDay; // Removed @Temporal annotation as it's not needed for java.sql.Date
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate rentalDay;
 
     @Column(name = "ReturnDay")
-    private Date returnDay; // Removed @Temporal annotation as it's not needed for java.sql.Date
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate returnDay;
+    
+    @Column(name = "TotalPrice")
+    private Double totalPrice;
+    
     @Column(name = "PhoneNumber")
     private String phoneNumber;
 
-    @Column(name = "Address",columnDefinition = "NVARCHAR(255)")
+    @Column(name = "Address")
     private String address;
 
     @Column(name = "Status")
-    private Boolean status; // To track approval status (true if approved, false otherwise)
+    private Boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "CarID", insertable = false, updatable = false)
+    private Car car;
 }

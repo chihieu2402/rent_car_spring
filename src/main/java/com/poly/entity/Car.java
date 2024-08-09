@@ -2,6 +2,8 @@ package com.poly.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "Car")
@@ -96,9 +99,6 @@ public class Car {
 	@Column(name = "Status")
 	private boolean status;
 
-	@Column(name = "DiscountID")
-	private int discountID;
-
 	@ManyToOne
 	@JoinColumn(name = "ReviewID")
 	private Review review;
@@ -110,10 +110,7 @@ public class Car {
 	@JoinColumn(name = "OwnerID")
 	private CarOwner carOwner;
 
-	@OneToOne
-	@JoinColumn(name = "DiscountID", insertable = false,updatable = false)
-	private Discount discount;
-  
+
 	@ManyToOne
 	@JoinColumn(name = "CarBrandID")
 	private CarBrand carBrand;
@@ -124,5 +121,10 @@ public class Car {
 	public Car get(int i) {
 		return null;
 	}
+	
+	
+	@OneToMany(mappedBy = "car")
+	@ToString.Exclude
+	private List<Booking> bookings;
 
 }

@@ -27,5 +27,7 @@ public class CarBrand {
     @Column(name="BrandName", columnDefinition = "NVARCHAR(255)")
     private String brandName;
 
+   @OneToMany(mappedBy = "carBrand")
+   private List<PendingCarPost> pendingCarPost;
    
 }
