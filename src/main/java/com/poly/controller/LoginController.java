@@ -49,33 +49,33 @@ public class LoginController {
 		return "/views/login";
 	}
 
-	@RequestMapping(value = "/index/login", method = RequestMethod.POST)
-	public String loginP(@RequestParam("username") String ur, @RequestParam("password") String pw, Model model) {
-		Account a  = (Account) ses.getAttribute("userSes");
-		if(a!=null) {
-			ses.removeAttribute("userSes");
-		}
-		if (ur.isBlank() || pw.isBlank()) {
-			model.addAttribute("mes", "Enter complete information");
-			return "/views/login";
-		} else {
-			try {
-				Account acc = accDao.findByUserName(ur).get();
-				if(acc.getPassWord().equals(pw)) {
-					ses.setAttribute("userSes",acc);
-					model.addAttribute("mes", "Login Success!");
-					return "redirect:/index";
-				} else {
-					model.addAttribute("mes", "Invalid Username or Password");
-					return "/views/login";
-				}
-			} catch (Exception e) {
-				model.addAttribute("mes", "Invalid Username or Password");
-				return "/views/login";
-			}
-
-		}
-	}
+//	@RequestMapping(value = "/index/login", method = RequestMethod.POST)
+//	public String loginP(@RequestParam("username") String ur, @RequestParam("password") String pw, Model model) {
+//		Account a  = (Account) ses.getAttribute("userSes");
+//		if(a!=null) {
+//			ses.removeAttribute("userSes");
+//		}
+//		if (ur.isBlank() || pw.isBlank()) {
+//			model.addAttribute("mes", "Enter complete information");
+//			return "/views/login";
+//		} else {
+//			try {
+//				Account acc = accDao.findByUserName(ur).get();
+//				if(acc.getPassWord().equals(pw)) {
+//					ses.setAttribute("userSes",acc);
+//					model.addAttribute("mes", "Login Success!");
+//					return "redirect:/index";
+//				} else {
+//					model.addAttribute("mes", "Invalid Username or Password");
+//					return "/views/login";
+//				}
+//			} catch (Exception e) {
+//				model.addAttribute("mes", "Invalid Username or Password");
+//				return "/views/login";
+//			}
+//
+//		}
+//	}
 
 	@RequestMapping(value = "/index/logout", method = RequestMethod.GET)
 	@ResponseBody

@@ -1,6 +1,6 @@
 var app = angular.module('app', []);
 app.controller("ctrl", function($scope, $http){
-    $scope.import = function(files){
+    $scope.import = function(files){	
         var reader = new FileReader();
         reader.onloadend = async () => {
             var workbook = new ExcelJS.Workbook();

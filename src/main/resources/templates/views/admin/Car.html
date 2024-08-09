@@ -113,12 +113,12 @@
 					<td th:text="${car.priceHoursCar}"></td>
 					<td th:text="${car.status ? 'Active' : 'Inactive'}"></td>	
 					<td th:text="${car.carOwner != null ? car.carOwner.ownerID : ''}"></td>
-<<<<<<< HEAD
-					<td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>	
-=======
-					<td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>
 
->>>>>>> 9b00d7f7de0a71864d9ed0bc65e618832aef6dc1
+					<td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>	
+
+					
+
+
 					<td><a th:href="@{/admin/car/edit/{id}(id=${car.carID})}"
 						class="btn btn-primary">Edit</a></td>
 				</tr>

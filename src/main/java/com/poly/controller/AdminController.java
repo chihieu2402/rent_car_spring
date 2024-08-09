@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.dao.AccountDao;
 import com.poly.entity.Account;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping(value ="/admin")
@@ -71,4 +73,9 @@ public class AdminController {
       
         return "redirect:/admin/account";
     }
+    @GetMapping("/Review")
+    public String rv() {
+        return "/views/admin/Review";
+    }
+    
 }
