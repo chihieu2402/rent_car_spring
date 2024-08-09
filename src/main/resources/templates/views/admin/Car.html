@@ -120,8 +120,7 @@
 					<td th:text="${car.status ? 'Active' : 'Inactive'}"></td>
 					<td th:text="${car.discountID}"></td>
 					<td th:text="${car.carOwner != null ? car.carOwner.ownerID : ''}"></td>
-					   <td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>
-
+					<td><img th:src="@{${car.image}}" alt="Car Image" style="width: 100px; height: auto;"></td>	
 					<td><a th:href="@{/admin/car/edit/{id}(id=${car.carID})}"
 						class="btn btn-primary">Edit</a></td>
 				</tr>
