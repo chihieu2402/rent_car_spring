@@ -113,9 +113,9 @@ INSERT INTO [dbo].[car]
            (2, 'Lamborghini Aventador', N'112 Tô Ký', N'Vàng', 18.0, 1, 1, 3, 'lamborghini-aventador.jpg'),
            (3, 'Porsche 911 Turbo S', N'112 Tô Ký', N'Xanh', 12.0, 1, 1, 4, 'porsche-911.jpg'),
            (4, 'McLaren P1', N'112 Tô Ký', N'Cam', 20.0, 1, 1, 5, 'mclaren-p1.jpg'),
-           (5, 'Bugatti Chiron', N'112 Tô Ký', N'Xanh Đen', 25.0, 1, 1, 6, 'bugatti-chiron.jpg');
+           (5, 'Bugatti Chiron', N'112 Tô Ký', N'Xanh Đen', 25.0, 1, 1, 5, 'bugatti-chiron.jpg');
 GO
-
+select * from car
 -- Inserting into bill table
 INSERT INTO [dbo].[bill]
            ([customer_name]
