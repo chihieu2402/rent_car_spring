@@ -18,6 +18,10 @@ import com.poly.dao.ReviewDao;
 import com.poly.entity.Account;
 import com.poly.entity.Bill;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 @Controller
 @RequestMapping(value ="/admin")
 @PreAuthorize("hasAuthority('ADMIN')")
@@ -87,4 +91,9 @@ public class AdminController {
         model.addAttribute("review", new com.poly.entity.Review());
         return "views/admin/Review";
     }
+    @GetMapping("/Review")
+    public String rv() {
+        return "/views/admin/Review";
+    }
+    
 }

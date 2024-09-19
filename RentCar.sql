@@ -73,6 +73,10 @@ INSERT INTO [dbo].[car_owner]
            (1);
 GO
 
+
+
+
+
 -- Inserting into car_brand table
 INSERT INTO [dbo].[car_brand]
            ([brand_name])
@@ -99,11 +103,11 @@ INSERT INTO [dbo].[car_brand]
            ('Alfa Romeo');
 GO
 
+
 -- Inserting into car table
 INSERT INTO [dbo].[car]
            ([car_brandid]
            ,[car_name]
-           ,[address]
            ,[color]
            ,[price_hours_car]
            ,[status]
@@ -115,7 +119,9 @@ INSERT INTO [dbo].[car]
            (2, 'Lamborghini Aventador', N'112 Tô Ký', N'Vàng', 18.0, 1, 1, 3, 'lamborghini-aventador.jpg'),
            (3, 'Porsche 911 Turbo S', N'112 Tô Ký', N'Xanh', 12.0, 1, 1, 4, 'porsche-911.jpg'),
            (4, 'McLaren P1', N'112 Tô Ký', N'Cam', 20.0, 1, 1, 5, 'mclaren-p1.jpg'),
+
            (5, 'Bugatti Chiron', N'112 Tô Ký', N'Xanh Đen', 25.0, 1, 1, 5, 'bugatti-chiron.jpg');
+
 GO
 select * from car
 -- Inserting into bill table
@@ -152,11 +158,15 @@ INSERT INTO [dbo].[payment]
            (10.0, 1, '2024-09-30');
 GO
 
+
+-- test
+
 -- Selecting data to verify
 SELECT * FROM [dbo].[account];
 SELECT * FROM [dbo].[review];
 SELECT * FROM [dbo].[customer];
 SELECT * FROM [dbo].[pending_car_post];
 SELECT * FROM [dbo].[car_brand];
+
 select * from car
 use Rentcar
