@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 CREATE DATABASE RentCar;
-=======
-﻿CREATE DATABASE RentCar;
->>>>>>> f4087c42ecab40a866bd0e76ef9b6be1c8b99084
+
 GO
 USE RentCar;
 GO
@@ -74,46 +72,11 @@ INSERT INTO [dbo].[car_owner]
      VALUES
            (1);
 GO
-<<<<<<< HEAD
-USE [RentCar]
-GO
-
-INSERT INTO [dbo].[car_brand]
-           ([brand_name])
-     VALUES
-=======
-
-<<<<<<< HEAD
---them du lieu carbrand
-INSERT INTO car_brand(brand_name) VALUES
->>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
-('Toyota'),
-('Honda'),
-('Ford'),
-('Mazda'),
-('Nissan'),
-('Hyundai'),
-('Kia'),
-('Mitsubishi'),
-('Subaru'),
-<<<<<<< HEAD
-('Chevrolet'),
-('Aston Martin'),
-('Bugatti'),
-('Ferrari'),
-('Koenigsegg');
-GO
-	USE [RentCar]
-GO
-
-INSERT INTO [dbo].[car]
-           ([address]
-           ,[car_brand]
-=======
-('Chevrolet');
 
 
-=======
+
+
+
 -- Inserting into car_brand table
 INSERT INTO [dbo].[car_brand]
            ([brand_name])
@@ -139,47 +102,13 @@ INSERT INTO [dbo].[car_brand]
            ('Hennessey'),
            ('Alfa Romeo');
 GO
->>>>>>> 9b00d7f7de0a71864d9ed0bc65e618832aef6dc1
+
 
 -- Inserting into car table
 INSERT INTO [dbo].[car]
            ([car_brandid]
->>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
            ,[car_name]
            ,[color]
-<<<<<<< HEAD
-           ,[discountid]
-           ,[image]
-           ,[price_hours_car]
-           ,[status]
-           ,[ownerid]
-<<<<<<< HEAD
-           ,[reviewid]
-           ,[ownership_document]
-           ,[car_brandid])
-     VALUES
-           (N'21 To Ky'
-           ,<car_brand, varchar(255),>
-           ,<car_name, nvarchar(255),>
-           ,<color, varchar(255),>
-           ,<discountid, int,>
-           ,<image, varchar(255),>
-           ,<price_hours_car, float,>
-           ,<status, bit,>
-           ,<ownerid, int,>
-           ,<reviewid, int,>
-           ,<ownership_document, varchar(255),>
-           ,<car_brandid, int,>)
-GO
-
-
-=======
-           ,[reviewid],
-			[image])
-     VALUES
-           (1,'Aston Martin',N'112 Tô Ký',N'Đen',1,10.0,1,1,1,'hinh-sieu-xe-32.jpg')
->>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
-=======
            ,[price_hours_car]
            ,[status]
            ,[ownerid]
@@ -190,10 +119,11 @@ GO
            (2, 'Lamborghini Aventador', N'112 Tô Ký', N'Vàng', 18.0, 1, 1, 3, 'lamborghini-aventador.jpg'),
            (3, 'Porsche 911 Turbo S', N'112 Tô Ký', N'Xanh', 12.0, 1, 1, 4, 'porsche-911.jpg'),
            (4, 'McLaren P1', N'112 Tô Ký', N'Cam', 20.0, 1, 1, 5, 'mclaren-p1.jpg'),
-           (5, 'Bugatti Chiron', N'112 Tô Ký', N'Xanh Đen', 25.0, 1, 1, 6, 'bugatti-chiron.jpg');
->>>>>>> 9b00d7f7de0a71864d9ed0bc65e618832aef6dc1
-GO
 
+           (5, 'Bugatti Chiron', N'112 Tô Ký', N'Xanh Đen', 25.0, 1, 1, 5, 'bugatti-chiron.jpg');
+
+GO
+select * from car
 -- Inserting into bill table
 INSERT INTO [dbo].[bill]
            ([customer_name]
@@ -224,29 +154,19 @@ INSERT INTO [dbo].[payment]
            ,[billid]
            ,[payment_date])
      VALUES
-<<<<<<< HEAD
-           (10.0,1,'2024-09-30')
-GO
-=======
+
            (10.0, 1, '2024-09-30');
 GO
 
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 9af980044d9d737df844c1d85e775ace38b374d3
 -- test
-=======
+
 -- Selecting data to verify
 SELECT * FROM [dbo].[account];
 SELECT * FROM [dbo].[review];
 SELECT * FROM [dbo].[customer];
 SELECT * FROM [dbo].[pending_car_post];
 SELECT * FROM [dbo].[car_brand];
->>>>>>> 9b00d7f7de0a71864d9ed0bc65e618832aef6dc1
+
 select * from car
->>>>>>> f4087c42ecab40a866bd0e76ef9b6be1c8b99084
+use Rentcar

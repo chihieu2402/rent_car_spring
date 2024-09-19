@@ -23,7 +23,7 @@ public class Booking {
     @Column(name = "CarID")
     private int carID;
 
-    @Column(name = "CustomerName")
+    @Column(name = "CustomerName", columnDefinition = "NVARCHAR(255)")
     private String customerName;
 
     @Column(name = "RentalDay")
@@ -40,7 +40,7 @@ public class Booking {
     @Column(name = "PhoneNumber")
     private String phoneNumber;
 
-    @Column(name = "Address")
+    @Column(name = "Address", columnDefinition = "NVARCHAR(255)")
     private String address;
 
     @Column(name = "Status")

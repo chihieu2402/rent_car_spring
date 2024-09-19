@@ -44,7 +44,7 @@ public class LoginController {
 //			acc.setPassWord(encodedPassword);
 //			accDao.save(acc);
 //		}
-
+		// cái này để mã hóa mật khẩu 1 lần
 		model.addAttribute("user", user);
 		return "/views/login";
 	}

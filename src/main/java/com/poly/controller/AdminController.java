@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.dao.AccountDao;
+import com.poly.dao.BillDao;
+import com.poly.dao.ReviewDao;
 import com.poly.entity.Account;
+import com.poly.entity.Bill;
+
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -24,6 +29,9 @@ public class AdminController {
     
     @Autowired
     private AccountDao accountDao;
+    @Autowired
+    private ReviewDao reviewDao;
+
 
     
     @GetMapping("/account")
@@ -72,6 +80,16 @@ public class AdminController {
     public String reset(Model model) {
       
         return "redirect:/admin/account";
+    }	
+    
+   
+    
+    @GetMapping("/Review")
+    public String Review(Model model) {
+        List<com.poly.entity.Review> reviews = reviewDao.findAll();
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("review", new com.poly.entity.Review());
+        return "views/admin/Review";
     }
     @GetMapping("/Review")
     public String rv() {
